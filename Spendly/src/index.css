@@ -4,7 +4,7 @@
 @theme{
   --font-display : "Poppins","sans-serif";
   --breakpoint-3xl : 1920px;
-  --color-primary : #8cf522;
+  --color-primary : #72CD16;
 }
 
 @layer base{
@@ -16,4 +16,8 @@
     background-color: #fcfbfc;
     overflow-x: hidden;
   }
+}
+
+.input-box {
+  @apply w-full flex justify-between gap-3 text-sm text-black bg-slate-100 rounded px-4 py-2 mb-3 mt-1 border border-slate-200 outline-none;
 }
