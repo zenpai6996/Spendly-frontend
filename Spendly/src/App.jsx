@@ -7,13 +7,16 @@ import {
 } from "react-router-dom";
 import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
-import Dashboard from './pages/Dashboard/dashboard';
+import Dashboard from './pages/Dashboard/DashBoard';
 import Income from './pages/Dashboard/Income';
 import Expenses from './pages/Dashboard/Expenses';
+import { Toaster } from "sonner";
+
 
 
 const App = () => {
   return (
+  <>
   <Router>
     <Routes>
       <Route path='/' element={<Root/>}/>
@@ -24,6 +27,9 @@ const App = () => {
       <Route path='/expense' exact element={<Expenses/>}/>
     </Routes>
   </Router>
+  <Toaster position="bottom-right" richColors />
+
+  </>
   )
 }
 

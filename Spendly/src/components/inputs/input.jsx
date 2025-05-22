@@ -2,23 +2,27 @@ import React, { useState } from 'react'
 
 const Input = ({ value, onChange, placeholder, label, type }) => {
   const [showPassword, setShowPassword] = useState(false);
-  
+  const [isFocused, setIsFocused] = useState(false);
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  return (
-    <div className="mb-5">
+ return (
+    <div className="mb-1">
       <label className="text-sm text-slate-800 block mb-2">
         {label}
       </label>
-      <div className="w-full flex justify-between items-center gap-3 text-sm text-black bg-slate-100 rounded px-4 py-3 border border-slate-200">
+      <div className={`w-full flex justify-between items-center gap-3 text-sm text-black bg-slate-100 rounded px-4 py-3 border ${
+        isFocused || value ? 'border-green-500' : 'border-slate-200'
+      } transition-colors duration-200`}>
         <input
           type={type === 'password' ? (showPassword ? 'text' : 'password') : type}
           placeholder={placeholder}
           className="w-full bg-transparent outline-none"
           value={value}
           onChange={(e) => onChange(e)}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
         />
         {type === "password" && (
           <div onClick={toggleShowPassword} className="cursor-pointer">
