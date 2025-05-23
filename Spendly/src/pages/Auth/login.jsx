@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState ,useEffect, useContext} from 'react';
 import AuthLayout from '../../components/Layouts/AuthLayout';
 import Input from '../../components/inputs/input';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,12 +6,16 @@ import { validateEmail , validatePassword} from '../../utils/helper';
 import { toast } from "sonner";
 import axiosInstance from '@/utils/axiosInstance';
 import { API_PATHS } from '@/utils/apiPaths';
+import { UserContext } from '@/context/userContext';
+import Lottie from "lottie-react";
+import Loader from "../../assets/animations/Loader.json"
 
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [passwordValidation, setPasswordValidation] = useState({
     isValid: false,
     checks: {
@@ -37,6 +41,8 @@ const Login = () => {
     }
   }, [password]);
 
+  const {updateUser} = useContext(UserContext);
+
   const navigate = useNavigate();
  
   const handleLogin = async (e) => {
@@ -55,10 +61,8 @@ const Login = () => {
       });      return;
     }
     setError("");
-     toast.success("Login Successful !!", {
-      description: "Redirecting to dashboard...",
-    });
-
+    setIsLoading(true);
+   
     //Login API call
     try{
       const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN,{
@@ -68,18 +72,28 @@ const Login = () => {
       const {token , user} = response.data;
       if(token){
         localStorage.setItem("token",token);
+        updateUser(user);
         navigate("/dashboard");
       }
+        toast.success("Login Successful !!", {
+        description: "Redirecting to dashboard...",
+    });
+
     }catch(error){
       if(error.response && error.response.data.message){
         setError(error.response.data.message);
+        toast.error("Incorrect Credentials ",{
+        description:"Please try again",
+      });
       }else{
         setError("Something went wrong. Please try again");
         toast.error("Something went wrong ",{
         description:"Please try again",
       });
       }
-    }
+    }finally {
+    setIsLoading(false); 
+  }
   };
 
   return (
@@ -99,7 +113,7 @@ const Login = () => {
                 value={email}
                 onChange={({target}) => setEmail(target.value)}
                 label="Email Address"
-                placeholder="johnDoe@example.com"
+                placeholder="johndoe@example.com"
                 type="text"
               />
               
@@ -129,11 +143,25 @@ const Login = () => {
             </div>
             <button 
                         type='submit'
+                        disabled={isLoading}
                         onClick={handleLogin}
-                        className="w-full bg-primary text-white py-3 rounded-2xl mt-4 font-medium transition-all duration-300 ease-in-out 
-                                hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/30 hover:border-green-300"
+                        className={`w-full bg-primary text-white py-3 rounded-2xl mt-4 font-medium transition-all duration-300 ease-in-out 
+                        hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/30 hover:border-green-300
+                        ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
                       >
-                        LOGIN
+                        {isLoading ? (
+                          <div className="flex items-center justify-center">
+                          
+                            <span className="mr-2">Logging in </span>
+                              <Lottie 
+                              animationData={Loader}
+                              loop={true}
+                              style={{ width: 50, height: 50 }}
+                            />
+                          </div>
+                        ) : (
+                          "LOGIN"
+                        )}
                       </button>
                       
                       <p className='text-2xs text-slate-500 text-center mb-3 '>

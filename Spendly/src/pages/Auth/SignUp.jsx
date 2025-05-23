@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { validateEmail , validatePassword} from '../../utils/helper';
 import { toast } from "sonner";
 import ProfilePhotoSelector from '@/components/inputs/profilePhotoSelector';
+import Lottie from "lottie-react";
+import Loader from "../../assets/animations/Loader.json"
 
 const SignUp = () => {
 
@@ -12,6 +14,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setfullName] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [passwordValidation, setPasswordValidation] = useState({
       isValid: false,
       checks: {
@@ -46,7 +49,7 @@ const SignUp = () => {
           let profileImageUrl = "";
 
           if(!fullName){
-            toast.error("No UserName ❌",{
+            toast.error("No Username ❌",{
               description:"Please enter you name"
             })
           }
@@ -63,6 +66,7 @@ const SignUp = () => {
             });      return;
           }
           setError("");
+          setIsLoading(true);
           
           //Sign up API call
 
@@ -130,11 +134,24 @@ const SignUp = () => {
             </div>
             <button 
                         type='submit'
+                        disabled={isLoading}
                         onClick={handleSignUp}
-                        className="w-full bg-primary text-white py-3 rounded-2xl mt-4 font-medium transition-all duration-300 ease-in-out 
-                                hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/30 hover:border-green-300"
+                        className={`w-full bg-primary text-white py-3 rounded-2xl mt-4 font-medium transition-all duration-300 ease-in-out 
+                                hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/30 hover:border-green-300 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
                       >
-                        SIGN UP
+                        {isLoading ? (
+                          <div className="flex items-center justify-center">
+                          
+                            <span className="mr-2">Signing in </span>
+                              <Lottie 
+                              animationData={Loader}
+                              loop={true}
+                              style={{ width: 50, height: 50 }}
+                            />
+                          </div>
+                        ) : (
+                          "SIGN IN"
+                        )}
                       </button>
                       
                       <p className='text-2xs text-slate-500 text-center mb-3 '>

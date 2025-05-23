@@ -11,13 +11,15 @@ import Dashboard from './pages/Dashboard/DashBoard';
 import Income from './pages/Dashboard/Income';
 import Expenses from './pages/Dashboard/Expenses';
 import { Toaster } from "sonner";
+import UserProvider from './context/userContext';
 
 
 
 const App = () => {
   return (
   <>
-  <Router>
+  <UserProvider>
+    <Router>
     <Routes>
       <Route path='/' element={<Root/>}/>
       <Route path='/login' exact element={<Login/>}/>
@@ -27,8 +29,25 @@ const App = () => {
       <Route path='/expense' exact element={<Expenses/>}/>
     </Routes>
   </Router>
-  <Toaster position="bottom-right" richColors />
-
+<Toaster 
+  position="bottom-right"
+  richColors
+  theme="light" 
+  toastOptions={{
+    classNames: {
+      toast: 'group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg',
+      description: 'group-[.toast]:text-muted-foreground',
+      actionButton: 'group-[.toast]:bg-primary group-[.toast]:text-primary-foreground',
+      cancelButton: 'group-[.toast]:bg-muted group-[.toast]:text-muted-foreground',
+    },
+    style: {
+      fontFamily:'Ubuntu',
+      borderRadius: '8px',
+      border: '1px solid #e5e7eb',
+    }
+  }}
+  />
+  </UserProvider>
   </>
   )
 }
