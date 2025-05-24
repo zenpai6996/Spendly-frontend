@@ -1,4 +1,4 @@
-import React ,{useState,useEffect}from 'react'
+import React ,{useState,useEffect,useContext}from 'react'
 import AuthLayout from '../../components/Layouts/AuthLayout';
 import Input from '../../components/inputs/input';
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,6 +7,11 @@ import { toast } from "sonner";
 import ProfilePhotoSelector from '@/components/inputs/profilePhotoSelector';
 import Lottie from "lottie-react";
 import Loader from "../../assets/animations/Loader.json"
+import axiosInstance from '@/utils/axiosInstance';
+import { API_PATHS } from '@/utils/apiPaths';
+import { UserContext } from '@/context/userContext';
+import uploadImage from '@/utils/uploadImage';
+
 
 const SignUp = () => {
 
@@ -40,6 +45,9 @@ const SignUp = () => {
         }
       }, [password]);
 
+  const {updateUser} = useContext(UserContext);
+  
+
   const navigate = useNavigate();
 
   //Handle Sign up Form Submit
@@ -65,14 +73,58 @@ const SignUp = () => {
               description: "Please enter the correct Password",
             });      return;
           }
-          setError("");
+          
           setIsLoading(true);
           
           //Sign up API call
+          try{
 
-           toast.success("Login Successful !!", {
-            description: "Redirecting to dashboard...",
+            //upload profile image to database 
+            if(profilePic){
+              try {
+                const imgUploadRes = await uploadImage(profilePic);
+                profileImageUrl = imgUploadRes.imageUrl || "";
+              } catch (error) {
+                toast.error("Image Upload Error", {
+                  description: error.message || "Please try again with a different image"
+                });
+                setIsLoading(false);
+                return;
+              }
+            }
+
+            const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER,{
+              fullName,
+              email,
+              password,
+              profileImageUrl
+            });
+            const {token ,user } = response.data;
+            
+            if(token){
+              localStorage.setItem("token",token);
+              updateUser(user);
+              navigate("/dashboard");
+            }
+             toast.success("Sign Up Successful !!", {
+             description: "Redirecting to dashboard...",
           });
+          }catch(error){
+            if(error.response && error.response.data.message){
+             
+               toast.error("Incorrect Credentials ",{
+                description:"Please try again",
+              });
+            }else{
+              toast.error("Something went wrong ",{
+                      description:"Please try again",
+                    });
+            }
+          }finally{
+            setIsLoading(false)
+          }
+
+          
 
   }
 
@@ -136,7 +188,7 @@ const SignUp = () => {
                         type='submit'
                         disabled={isLoading}
                         onClick={handleSignUp}
-                        className={`w-full bg-primary text-white py-3 rounded-2xl mt-4 font-medium transition-all duration-300 ease-in-out 
+                        className={`w-full cursor-pointer bg-primary text-white py-3 rounded-2xl mt-4 font-medium transition-all duration-300 ease-in-out 
                                 hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/30 hover:border-green-300 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
                       >
                         {isLoading ? (
