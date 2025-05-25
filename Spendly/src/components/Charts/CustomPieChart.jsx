@@ -10,6 +10,9 @@ import {
 import CustomTooltip from './CustomTooltip';
 import CustomLegend from './CustomLegend';
 
+//TODO: Create empty states for recent transactions if theres no data to fetch
+//TODO: Create Skeleton pages
+
 const CustomPieChart = ({
   data,
   label,

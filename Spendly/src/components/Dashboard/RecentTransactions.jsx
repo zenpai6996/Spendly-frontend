@@ -3,6 +3,9 @@ import React from 'react'
 import { LuArrowRight } from 'react-icons/lu'
 import TransactionInfoCard from '../Cards/TransactionInfoCard'
 
+//TODO: Create empty states for recent transactions if theres no data to fetch
+//TODO: Create Skeleton pages
+
 const RecentTransactions = ({transactions,onSeeMore}) => {
   return (
     <div className='card'>
