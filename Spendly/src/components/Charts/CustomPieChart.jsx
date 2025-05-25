@@ -9,6 +9,7 @@ import {
 } from "recharts";
 import CustomTooltip from './CustomTooltip';
 import CustomLegend from './CustomLegend';
+
 const CustomPieChart = ({
   data,
   label,
@@ -16,6 +17,8 @@ const CustomPieChart = ({
   totalAmount,
   showTextAnchor,
 }) => {
+  
+ 
   return (
     <ResponsiveContainer width={"100%"} height={380}>
       <PieChart >
