@@ -22,6 +22,9 @@ export const useUserAuth = () => {
         }
       }catch(error){
         console.error("Failed to fetch user info",error);
+        toast.error("User data not found...",{
+          description:"Failed to fetch user data",
+        })
         if(isMounted){
           clearUser();
           navigate("/login");

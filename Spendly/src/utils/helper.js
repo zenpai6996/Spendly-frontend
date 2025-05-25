@@ -62,4 +62,20 @@ export const getInitials = (name) => {
     initials += words[i][0];
   }
   return initials.toUpperCase();
-}
+};
+
+export const addThousandsSeparator = (num) => {
+
+  if (typeof num !== "number" || isNaN(num) || !isFinite(num)) return "";
+
+  const [integerPart, fractionalPart] = num.toString().split(".");
+  
+  const sign = integerPart.startsWith("-") ? "-" : "";
+  const absoluteInteger = integerPart.replace("-", "");
+  
+  const formattedInteger = absoluteInteger.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  
+  return fractionalPart 
+    ? `${sign}${formattedInteger}.${fractionalPart}` 
+    : `${sign}${formattedInteger}`;
+};
