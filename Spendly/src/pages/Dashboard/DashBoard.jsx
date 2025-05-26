@@ -12,7 +12,7 @@ import { addThousandsSeparator } from '@/utils/helper';
 import RecentTransactions from '@/components/Dashboard/RecentTransactions';
 import FinanceOverview from '@/components/Dashboard/FinanceOverview';
 import ExpenseTransactions from '@/components/Dashboard/ExpenseTransactions';
-import Last30DaysExpenses from '@/components/Dashboard/last30DaysExpenses';
+import Last30DaysExpenses from '@/components/Dashboard/Last30DaysExpenses';
 
 const Dashboard = () => {
   useUserAuth();
