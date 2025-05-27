@@ -13,7 +13,7 @@ import RecentTransactions from '@/components/Dashboard/RecentTransactions';
 import FinanceOverview from '@/components/Dashboard/FinanceOverview';
 import ExpenseTransactions from '@/components/Dashboard/ExpenseTransactions';
 import Last30DaysExpenses from '@/components/Dashboard/Last30DaysExpenses';
-import RecentIncomeWithChart from '@/pages/Dashboard/RecentIncomeWithChart';
+import RecentIncomeWithChart from '@/components/Income/RecentIncomeWithChart';
 import RecentIncome from '@/components/Dashboard/RecentIncome';
 
 const Dashboard = () => {
