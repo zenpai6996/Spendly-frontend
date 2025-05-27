@@ -8,8 +8,11 @@ import Modal from '@/components/Modal';
 import AddIncomeForm from '@/components/inputs/AddIncomeForm';
 import IncomeList from '@/components/Income/IncomeList';
 import DeleteAlert from '@/components/DeleteAlert';
+import { useUserAuth } from '@/hooks/useUserAuth';
 
 const Income = () => {
+
+  useUserAuth();
 
   const [incomeData, setIncomeData] = useState([]);
 
@@ -96,7 +99,7 @@ const Income = () => {
       await axiosInstance.delete(API_PATHS.INCOME.DELETE_INCOME(id));
 
       setOpenDeleteAlert({show:false,data:null});
-      toast.info("Income details deleted succesfully");
+      toast.info("Income detail deleted succesfully");
       fetchIncomeDetails();
 
     }catch(error){

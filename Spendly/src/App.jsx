@@ -30,7 +30,7 @@ const App = () => {
     </Routes>
   </Router>
 <Toaster 
-  position="bottom-right"
+  position="top-right"
   richColors
   theme="light" 
   toastOptions={{
