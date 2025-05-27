@@ -24,12 +24,14 @@ const CustomBarChart = ({data}) => {
       return (
         <div className='bg-white shadow-md rounded-lg p-2 border border-gray-300'>
           <p className='text-xs font-semibold text-green-800 mb-1'>
-            {payload[0].payload.category}
+            {payload[0].payload.category || payload[0].payload.source}
+            
           </p>
-          <p className='text-sm text-gray-600'>
+          <p className='text-sm text-gray-600 text-primary'>
             Amount: <span className='text-sm font-medium text-gray-900'>
               {payload[0].payload.amount}
             </span>
+            
           </p>
         </div>
       );
@@ -64,7 +66,7 @@ const CustomBarChart = ({data}) => {
                 <Cell key={index} fill={getBarColor(index)}/>
             })}
           </Bar>
-          <Legend content={CustomLegend}/>
+          
         </BarChart>
       </ResponsiveContainer>
     </div>

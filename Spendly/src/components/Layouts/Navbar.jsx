@@ -18,7 +18,7 @@ const Navbar = ({activeMenu}) => {
         )}
       </button>
       <h2 className='text-xl font-semibold text-gray-800'>
-        Spendly
+        <a href='/dashboard'>Spendly</a>
       </h2>
       
       {openSideMenu && (
