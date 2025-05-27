@@ -6,6 +6,8 @@ import { API_PATHS } from '@/utils/apiPaths';
 import { toast } from 'sonner';
 import Modal from '@/components/Modal';
 import AddIncomeForm from '@/components/inputs/AddIncomeForm';
+import IncomeList from '@/components/Income/IncomeList';
+import DeleteAlert from '@/components/DeleteAlert';
 
 const Income = () => {
 
@@ -89,8 +91,20 @@ const Income = () => {
   };
 
   //? Handle delete Income
-  const deleteIncome = async () => {
+  const deleteIncome = async (id) => {
+    try{
+      await axiosInstance.delete(API_PATHS.INCOME.DELETE_INCOME(id));
 
+      setOpenDeleteAlert({show:false,data:null});
+      toast.info("Income details deleted succesfully");
+      fetchIncomeDetails();
+
+    }catch(error){
+        console.log("Error deleting income details",error.response?.data?.message || error.message);
+        toast.error("Error deleting income details",{
+          description:error.response?.data?.message || error.message
+        })
+    }
   };
 
   //? Handle download income excel
@@ -117,6 +131,13 @@ const Income = () => {
             onAddIncome={() => setOpenAddIncomeModal(true)}
           />
           </div>
+          <IncomeList 
+            transactions={incomeData}
+            onDelete={(id) => {
+              setOpenDeleteAlert({show:true , data:id})
+            }}
+            onDownload={handleDownloadIncomeDetails}
+          />
         </div>
         <Modal
           isOpen={OpenAddIncomeModal}
@@ -126,6 +147,16 @@ const Income = () => {
           <div dark:text-white text-gray-200>
             <AddIncomeForm onAddIncome={handleAddIncome}/>
           </div>
+        </Modal>
+        <Modal 
+          isOpen={openDeleteAlert.show}
+          onClose={() => setOpenDeleteAlert({show:false ,data:null})}
+          title="Delete Income"
+        >
+          <DeleteAlert
+            content="Are you sure you want to delete this income ?"
+            onDelete={() => deleteIncome(openDeleteAlert.data)}
+          />
         </Modal>
       </div>
       </DashboardLayout>

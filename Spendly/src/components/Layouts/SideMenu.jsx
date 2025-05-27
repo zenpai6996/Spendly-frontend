@@ -49,7 +49,7 @@ const SideMenu = ({activeMenu}) => {
           {SIDE_MENU_DATA.map((item, index) => (
             <button
               key={`menu_${index}`}
-              className={`w-full flex items-center gap-3 text-sm font-medium py-3 px-4 rounded-lg transition-colors ${
+              className={`w-full flex cursor-pointer items-center gap-3 text-sm font-medium py-3 px-4 rounded-lg transition-colors ${
                 activeMenu === item.label 
                   ? 'bg-primary text-white' 
                   : 'text-gray-600 hover:bg-gray-100'
