@@ -12,6 +12,7 @@ import Income from './pages/Dashboard/Income';
 import Expenses from './pages/Dashboard/Expenses';
 import { Toaster } from "sonner";
 import UserProvider from './context/userContext';
+import Home from './pages/Landing/Home';
 
 
 
@@ -25,6 +26,7 @@ const App = () => {
       <Route path='/login' exact element={<Login/>}/>
       <Route path='/signup' exact element={<SignUp/>}/>
       <Route path='/dashboard' exact element={<Dashboard/>}/>
+      <Route path='/home' exact element={<Home/>}/>
       <Route path='/income' exact element={<Income/>}/>
       <Route path='/expense' exact element={<Expenses/>}/>
     </Routes>
@@ -60,7 +62,7 @@ const Root = () => {
 
   //Redirect to dashboard if authenticated 
   return isAuthenticated ? (
-    <Navigate to={"/dashboard"}/>
+    <Navigate to={"/home"}/>
   ):(
     <Navigate to={"/login"}/>
   );
