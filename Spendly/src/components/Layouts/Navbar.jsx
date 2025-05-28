@@ -17,7 +17,8 @@ const Navbar = ({activeMenu}) => {
           <HiOutlineMenu className='text-2xl'/>
         )}
       </button>
-      <h2 className='text-xl font-semibold text-gray-800'>
+      <h2 className='text-xl font-semibold hover:text-primary
+      transition-colors duration-200 ease-in-out dark:text-gray-800 text-gray-50'>
         <a href='/dashboard'>Spendly</a>
       </h2>
       
