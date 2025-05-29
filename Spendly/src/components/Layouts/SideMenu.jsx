@@ -23,14 +23,14 @@ const SideMenu = ({activeMenu}) => {
   }
 
   return (
-    <div className='w-64 h-[calc(100vh-61px)] bg-white border-r border-gray-200/50 p-5 sticky top-[61px] z-20'>
+    <div className='w-64 h-[calc(100vh-61px)] bg-white rounded-tr-xl border-r dark:bg-gray-900 border-primary dark:border-gray-600 p-5 sticky top-[64px] z-20'>
       <div className='flex flex-col gap-6'>
-        <div className='flex flex-col items-center justify-center mt-3 gap-3 mb-7'>
+        <div className='flex flex-col items-center justify-center mt-3 gap-3 mb-1'>
           {user?.profileImageUrl ? (
             <img 
               src={user?.profileImageUrl}
               alt="Profile Image"
-              className='w-20 h-20 rounded-full bg-slate-400 object-cover'
+              className='w-20 h-20 border-2  border-primary  rounded-full bg-slate-400 object-cover'
             />
           ):(
             <CharAvatar
@@ -40,7 +40,7 @@ const SideMenu = ({activeMenu}) => {
               style="text-xl"
             />
           )}
-          <h5 className='text-gray-950 font-medium text-lg'>
+          <h5 className='text-gray-900 dark:text-gray-100 font-medium text-lg'>
             {user?.fullName || ""}
           </h5>
         </div>
@@ -51,8 +51,8 @@ const SideMenu = ({activeMenu}) => {
               key={`menu_${index}`}
               className={`w-full flex cursor-pointer items-center gap-3 text-sm font-medium py-3 px-4 rounded-lg transition-colors ${
                 activeMenu === item.label 
-                  ? 'bg-primary text-white' 
-                  : 'text-gray-600 hover:bg-gray-100'
+                  ? 'bg-primary text-gray-900 dark:text-white' 
+                  : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 hover:dark:bg-gray-700'
               }`}
               onClick={() => handleClick(item.path)}
             >

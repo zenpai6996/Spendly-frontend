@@ -99,7 +99,7 @@ const Login = () => {
   return (
     <AuthLayout>
        <div className='lg:w-[100%] h-auto md:h-full mt-10 md:mt-0 flex flex-col justify-center'>
-        <h3 className='text-2xl sm:text-xl font-semibold text-black text-center md:text-left'>
+        <h3 className='text-2xl sm:text-xl font-semibold text-black dark:text-gray-300 text-center md:text-left'>
           Welcome Back
         </h3>
         <p className='text-sm text-primary mt-1 mb-7 text-center md:text-left'>
@@ -125,7 +125,7 @@ const Login = () => {
                 type="password"
               />
                <div className="text-xs ">
-            <p className="text-slate-600 mb-1 text-sm">Password must contain:</p>
+            <p className="text-slate-600 dark:text-gray-300 mb-1 text-sm">Password must contain:</p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1">
               <li className={`flex items-center ${passwordValidation.checks.length ? 'text-green-500' : 'text-slate-400'}`}>
                 {passwordValidation.checks.length ? '✓' : '✗'} At least 8 characters
@@ -164,7 +164,7 @@ const Login = () => {
                         )}
                       </button>
                       
-                      <p className='text-2xs text-slate-500 text-center mb-3 '>
+                      <p className='text-2xs text-slate-500 dark:text-gray-300 text-center mb-3 '>
                         Don't have an account?{' '}
                         <Link to="/signup" className='text-primary hover:text-green-500'>
                           Sign Up

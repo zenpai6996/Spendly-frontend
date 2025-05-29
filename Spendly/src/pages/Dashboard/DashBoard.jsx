@@ -7,7 +7,7 @@ import { API_PATHS } from '@/utils/apiPaths';
 import { toast } from 'sonner';
 import InfoCard from '@/components/Cards/InfoCard';
 import { LuHandCoins,LuWalletMinimal } from 'react-icons/lu';
-import {IoMdCard} from "react-icons/io";
+import { Landmark ,Wallet,Coins} from 'lucide-react';
 import { addThousandsSeparator } from '@/utils/helper';
 import RecentTransactions from '@/components/Dashboard/RecentTransactions';
 import FinanceOverview from '@/components/Dashboard/FinanceOverview';
@@ -15,6 +15,9 @@ import ExpenseTransactions from '@/components/Dashboard/ExpenseTransactions';
 import Last30DaysExpenses from '@/components/Dashboard/Last30DaysExpenses';
 import RecentIncomeWithChart from '@/components/Income/RecentIncomeWithChart';
 import RecentIncome from '@/components/Dashboard/RecentIncome';
+
+
+
 
 const Dashboard = () => {
   useUserAuth();
@@ -54,25 +57,25 @@ const Dashboard = () => {
   
   return (
     <DashboardLayout activeMenu="Dashboard">
-      <div className='my-5 mx-auto'>
+      <div className='my-5 mx-auto '>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
           <InfoCard
-              icon={<IoMdCard/>}
+              icon={<Landmark />}
               label="Total Balance"
               value={addThousandsSeparator(dashboardData?.totalBalance || 0)}
               color="bg-yellow-500"
           /> 
           <InfoCard
-              icon={<LuWalletMinimal/>}
+              icon={<Wallet/>}
               label="Total Income"
               value={addThousandsSeparator(dashboardData?.totalIncome || 0)}
-              color="bg-orange-500"
+              color="bg-green-500"
           /> 
           <InfoCard
-              icon={<LuHandCoins/>}
+              icon={<Coins/>}
               label="Total Expense"
               value={addThousandsSeparator(dashboardData?.totalExpense || 0)}
-              color="bg-red-500"
+              color="bg-red-400"
           /> 
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>

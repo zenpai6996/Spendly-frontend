@@ -10,11 +10,11 @@ const RecentTransactions = ({transactions,onSeeMore}) => {
   return (
     <div className='card'>
       <div className='flex items-center justify-between'>
-        <h5 className='text-lg'>
+        <h5 className='text-lg  dark:text-primary dark:text-gray-300'>
             Recent Transactions
         </h5>
         <button className='card-btn' onClick={onSeeMore}>
-            See All <LuArrowRight className='text-base inline-block hover:translate-x-1.5 transition-[transform] duration-300 ease-in-out'/>
+            See All <LuArrowRight className='text-base inline-block hover:translate-x-1 transition-[transform] duration-300 ease-in-out'/>
         </button>
       </div>
       <div className='mt-6'>

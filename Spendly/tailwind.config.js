@@ -1,8 +1,14 @@
-
-module.exports = {
-  darkMode: 'class', 
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
+      colors: {
+        primary: '#72CD16',
+      },
       keyframes: {
         'gradient-x': {
           '0%, 100%': {
