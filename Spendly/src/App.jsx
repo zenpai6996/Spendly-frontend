@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {
   BrowserRouter as Router,
   Routes,
@@ -16,7 +16,27 @@ import Home from './pages/Landing/Home';
 
 
 
+export const toggleDarkMode = () => {
+  const html = document.documentElement
+  if (html.classList.contains('dark')) {
+    html.classList.remove('dark')
+    localStorage.theme = 'light'
+  } else {
+    html.classList.add('dark')
+    localStorage.theme = 'dark'
+  }
+}
+
 const App = () => {
+
+  useEffect(() => {
+  if (localStorage.theme === 'dark') {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+}, []);
+
   return (
   <>
   <UserProvider>

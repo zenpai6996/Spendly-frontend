@@ -24,8 +24,8 @@ useEffect(() => {
             Track your earnings over time effortlessly
           </p>
         </div>
-        <button onClick={onAddIncome} className='add-btn'>
-          <LuPlus className='text-lg'/> Add Income
+        <button onClick={onAddIncome} className='add-btn '>
+          <LuPlus className='text-lg '/> Add Income
         </button>
       </div>
       <div className='mt-10'>

@@ -7,9 +7,13 @@ const DashboardLayout = ({children,activeMenu}) => {
   
   const {user} = useContext(UserContext);
 
+  
+
+
   return (
-    <div className='min-h-screen bg-gray-50'>
+    <div className='min-h-screen bg-gray-100 dark:bg-[#07101c] '>
       <Navbar activeMenu={activeMenu}/>
+      
       {user && (
         <div className='flex'>
           <div className='max-[1080px]:hidden'>
