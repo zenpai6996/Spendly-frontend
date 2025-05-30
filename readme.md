@@ -1,8 +1,9 @@
-# 💹 Spendly - Smart Personal Finance Tracker
+
 
 <div align="center">
+  
+[![Spendly ](./spendly-banner.svg)](https://github.com/zenpai6996/Spendly-frontend)
 
-![Spendly Banner](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=35&duration=3000&pause=1000&color=22C55E&center=true&vCenter=true&width=600&height=100&lines=💰+Welcome+to+Spendly;📊+Track+Your+Finances;✨+Manage+Your+Money+Smart)
 
 <p align="center">
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React"/>
@@ -14,7 +15,6 @@
 <p align="center">
   <strong>🚀 A Modern, Intuitive personal finance tracker built with React</strong>
 </p>
-
 <p align="center">
   <a href="#-features">✨ Features</a> •
   <a href="#-demo">🔗 Demo</a> •
@@ -23,6 +23,10 @@
   <a href="#-tech-stack">🛠️ Tech Stack</a> •
   <a href="#-contributing">🤝 Contributing</a>
 </p>
+
+[![GitHub Repo](https://badgen.net/badge/icon/github?icon=github&label=Spendly%20Backend)](https://github.com/zenpai6996/Spendly-backend)
+
+
 
 ---
 
@@ -66,6 +70,15 @@ Take control of your finances with Spendly - where intelligent design meets powe
 - Mobile-first approach
 
 </td>
+<td width="60%">
+  
+  ### 🤖 **SpendlyAI**
+  
+ - AI-generated financial insights
+ - Auto-categorization of expenses
+ - Personalized recommendations
+   
+</td>
 </tr>
 </table>
 
@@ -77,12 +90,14 @@ Take control of your finances with Spendly - where intelligent design meets powe
 - 🌙 **Dark Mode**: Easy on the eyes, day or night
 - 🔒 **Secure**: User authentication and data protection
 - 📈 **Analytics**: Comprehensive financial insights
+- 🤖 **AI**:  AI-Powered Insights
+- 🔽 **PWA supported** : Website installable on mobile
 
 ## 🔗 Demo
 
 <div align="center">
 
-### 🌐 [**Live Demo →**](spendly-frontend-pi.vercel.app)
+### 🌐 [**Live Demo →**](https://spendly-frontend-pi.vercel.app)
 
 *Experience Spendly in action*
 
@@ -181,33 +196,20 @@ npm run preview
 
 ## 🌟 Screenshots
 
-<div align="center">
+| ![Light Mode 1](https://github.com/user-attachments/assets/15acf92e-b993-43cb-8bd9-b6a96ebc7113) | ![Dark Mode 1](https://github.com/user-attachments/assets/29143cc0-d506-473f-86fb-8ab7d9734703) |
+|:--:|:--:|
+| *Dashboard (Light)* | *Dashboard (Dark)* |
 
-### 🌅 Light Mode
-![Light Mode Dashboard](https://via.placeholder.com/800x400/ffffff/000000?text=Light+Mode+Dashboard)
+| ![Light Mode 2](https://github.com/user-attachments/assets/ebc6b57d-4d8b-4155-a16b-21ac1007797b) | ![Dark Mode 2](https://github.com/user-attachments/assets/d11cddad-29fb-411f-b025-3d174f7d8bc4) |
+|:--:|:--:|
+| *Insights (Light)* | *Insights (Dark)* |
 
-### 🌙 Dark Mode  
-![Dark Mode Dashboard](https://via.placeholder.com/800x400/1a1a1a/ffffff?text=Dark+Mode+Dashboard)
 
-</div>
 
-## 🚀 Deployment
-
-### Netlify (Recommended)
-
-1. Build the project: `npm run build`
-2. Deploy the `dist` folder to Netlify
-3. Configure environment variables if needed
-
-### Other Platforms
-
-- **Vercel**: Import GitHub repository directly
-- **GitHub Pages**: Use `gh-pages` package
-- **Firebase Hosting**: Use Firebase CLI
 
 ## 🤝 Contributing
 
-We welcome contributions! Here's how you can help:
+Contributions are welcome! Here's how you can help:
 
 1. **🍴 Fork** the repository
 2. **🌿 Create** your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -230,7 +232,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 **Need help?** 
 
 [![GitHub Issues](https://img.shields.io/badge/GitHub-Issues-red?style=for-the-badge&logo=github)](https://github.com/zenpai6996/Spendly-frontend/issues)
-[![Email](https://img.shields.io/badge/Email-Contact-blue?style=for-the-badge&logo=gmail)](mailto:your-email@example.com)
 
 </div>
 
