@@ -1,0 +1,106 @@
+<svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059212;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFDB00;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Card gradient -->
+    <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgba(255,255,255,0.05);stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Drop shadow -->
+    <filter id="dropshadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(0,0,0,0.3)"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="200" fill="url(#bgGradient)"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="700" cy="50" r="30" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="750" cy="150" r="20" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="50" cy="170" r="25" fill="rgba(255,255,255,0.06)"/>
+  
+  <!-- Main card -->
+  <rect x="40" y="30" width="720" height="140" rx="16" fill="url(#cardGradient)" 
+        stroke="rgba(255,255,255,0.2)" stroke-width="1" filter="url(#dropshadow)"/>
+  
+  <!-- Wallet icon -->
+  <g transform="translate(70, 60)">
+    <!-- Wallet body -->
+    <rect x="0" y="10" width="40" height="25" rx="4" fill="#4ade80" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <!-- Cards in wallet -->
+    <rect x="5" y="5" width="30" height="4" rx="2" fill="#fbbf24"/>
+    <rect x="5" y="0" width="30" height="4" rx="2" fill="#f87171"/>
+    <!-- Wallet flap -->
+    <path d="M 0 10 Q 0 6 4 6 L 36 6 Q 40 6 40 10" fill="#22c55e" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+  </g>
+  
+  <!-- Dollar sign -->
+  <g transform="translate(130, 55)" filter="url(#glow)">
+    <circle cx="15" cy="15" r="15" fill="#fbbf24" opacity="0.9"/>
+    <text x="15" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">$</text>
+  </g>
+  
+  <!-- Chart icon -->
+  <g transform="translate(180, 65)">
+    <!-- Chart bars -->
+    <rect x="0" y="15" width="4" height="10" fill="#8b5cf6"/>
+    <rect x="6" y="10" width="4" height="15" fill="#a78bfa"/>
+    <rect x="12" y="5" width="4" height="20" fill="#c4b5fd"/>
+    <rect x="18" y="12" width="4" height="13" fill="#8b5cf6"/>
+    <!-- Trend line -->
+    <path d="M 2 20 L 8 15 L 14 8 L 20 18" stroke="#fbbf24" stroke-width="2" fill="none"/>
+    <circle cx="2" cy="20" r="1.5" fill="#fbbf24"/>
+    <circle cx="8" cy="15" r="1.5" fill="#fbbf24"/>
+    <circle cx="14" cy="8" r="1.5" fill="#fbbf24"/>
+    <circle cx="20" cy="18" r="1.5" fill="#fbbf24"/>
+  </g>
+  
+  <!-- Project title -->
+  <text x="280" y="85" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="white" filter="url(#glow)">
+    Spendly 
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="280" y="110" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.9)">
+    Smart Personal Finance Tracker
+  </text>
+  
+  <!-- Tags -->
+  <g transform="translate(280, 125)">
+    <!-- Backend tag -->
+    <rect x="0" y="0" width="60" height="20" rx="10" fill="rgba(204, 102, 255, 0.2)" stroke="#AF47D2" stroke-width="1"/>
+    <text x="30" y="14" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#AF47D2">FRONTEND</text>
+    
+    <!-- API tag -->
+    <rect x="70" y="0" width="35" height="20" rx="10" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1"/>
+    <text x="87.5" y="14" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#3b82f6">REACT</text>
+    
+    <!-- Finance tag -->
+    <rect x="115" y="0" width="55" height="20" rx="10" fill="rgba(255, 143, 0, 0.2)" stroke="#FF8F00" stroke-width="1"/>
+    <text x="142.5" y="14" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#FFDB00">FINANCE</text>
+  </g>
+  
+  <!-- Decorative code brackets -->
+  <g transform="translate(650, 70)" fill="rgba(255,255,255,0.4)">
+    <text font-family="monospace" font-size="24" font-weight="bold">{ }</text>
+  </g>
+  
+
+ 
+</svg>
