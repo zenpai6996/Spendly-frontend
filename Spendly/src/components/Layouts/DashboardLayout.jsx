@@ -37,7 +37,7 @@ const DashboardLayout = ({children, activeMenu}) => {
       />
       
       {user && (
-        <div className='flex ml-5'>
+        <div className='flex '>
           
           {!isMobile && (
             <motion.div

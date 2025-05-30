@@ -77,7 +77,7 @@ const Dashboard = () => {
   
   return (
     <DashboardLayout activeMenu="Dashboard">
-      <motion.div variants={containerVariants} className='my-5 mx-auto '>
+      <motion.div variants={containerVariants} className='my-5 ml-5 '>
         <motion.div variants={itemVariants} className='grid grid-cols-1 md:grid-cols-3 gap-6'>
           <InfoCard 
               icon={<Landmark />}
