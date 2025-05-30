@@ -15,11 +15,31 @@ import ExpenseTransactions from '@/components/Dashboard/ExpenseTransactions';
 import Last30DaysExpenses from '@/components/Dashboard/Last30DaysExpenses';
 import RecentIncomeWithChart from '@/components/Income/RecentIncomeWithChart';
 import RecentIncome from '@/components/Dashboard/RecentIncome';
+import { motion } from 'framer-motion';
 
 
 
 
 const Dashboard = () => {
+
+  
+  const containerVariants = {
+  hidden: { opacity: 0, x: -30 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      staggerChildren: 0.07,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 },
+  };
+
   useUserAuth();
   const navigate = useNavigate();
 
@@ -57,9 +77,9 @@ const Dashboard = () => {
   
   return (
     <DashboardLayout activeMenu="Dashboard">
-      <div className='my-5 mx-auto '>
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-          <InfoCard
+      <motion.div variants={containerVariants} className='my-5 mx-auto '>
+        <motion.div variants={itemVariants} className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+          <InfoCard 
               icon={<Landmark />}
               label="Total Balance"
               value={addThousandsSeparator(dashboardData?.totalBalance || 0)}
@@ -77,7 +97,7 @@ const Dashboard = () => {
               value={addThousandsSeparator(dashboardData?.totalExpense || 0)}
               color="bg-red-400"
           /> 
-        </div>
+        </motion.div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
           <RecentTransactions
             transactions={dashboardData?.recentTransactions}
@@ -106,7 +126,7 @@ const Dashboard = () => {
           data={dashboardData?.last30DaysExpenses?.transaction || []}
          />
         </div>
-      </div>
+      </motion.div>
     </DashboardLayout>
   )
 }
