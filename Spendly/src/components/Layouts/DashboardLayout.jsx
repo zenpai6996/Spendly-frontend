@@ -29,7 +29,7 @@ const DashboardLayout = ({children, activeMenu}) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }} 
-      className='min-h-screen bg-gray-100 dark:bg-[#07101c]'>
+      className='min-h-screen bg-gray-100  dark:bg-[#07101c]'>
       <Navbar 
         activeMenu={activeMenu}
         isSideMenuOpen={isSideMenuOpen}
@@ -37,14 +37,14 @@ const DashboardLayout = ({children, activeMenu}) => {
       />
       
       {user && (
-        <div className='flex'>
+        <div className='flex ml-5'>
           
           {!isMobile && (
             <motion.div
               initial={{ width: isSideMenuOpen ? 256 : 0 }}
               animate={{ width: isSideMenuOpen ? 256 : 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className='overflow-hidden mr-5'
+              className='overflow-hidden mr-5 '
             >
               <SideMenu 
                 activeMenu={activeMenu}
