@@ -26,7 +26,7 @@ const Navbar = ({activeMenu}) => {
             <HiOutlineMenu className='text-2xl text-black dark:text-gray-50'/>
           )}
         </button>
-        <h2 className='text-2xl font-semibold hover:text-primary dark:hover:text-primary
+        <h2 className='text-2xl font-semibold  hover:text-primary dark:hover:text-primary
         transition-colors duration-200 ease-in-out dark:text-gray-50 text-gray-800'>
           <a href='/dashboard'>Spendly</a>
         </h2>
@@ -39,11 +39,13 @@ const Navbar = ({activeMenu}) => {
         </h3>
       </div>
 
-      <div>
-        <button onClick={toggleDarkMode} className="p-1 text-sm rounded bg-gray-700 dark:bg-gray-200 text-white dark:text-black">
+      <div >
+        <button onClick={toggleDarkMode} className="p-1  text-sm rounded bg-gray-700 dark:bg-gray-200 text-white dark:text-black">
           Toggle Dark Mode
         </button>
+        
       </div>
+      
       
       {openSideMenu && (
         <div className='fixed top-[48px] left-0 h-full lg:hidden z-20'>

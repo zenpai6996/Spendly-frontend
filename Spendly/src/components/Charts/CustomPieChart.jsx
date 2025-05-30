@@ -26,7 +26,7 @@ const CustomPieChart = ({
             y="34%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className='text-[#666] dark:text-gray-300'
+            className='text-[#666] dark:text-gray-300 '
             fill='#666'
             fontSize="14px"
           >

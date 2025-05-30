@@ -17,13 +17,15 @@ const FinanceOverview = ({totalBalance,totalIncome,totalExpense}) => {
       <div className='flex items-center justify-between'>
       <h5 className='text-lg dark:text-primary '>Financial Overview</h5>
     </div>
-    <CustomPieChart
+    <div className='mt-5'>
+      <CustomPieChart
       data={balanceData}
       label="Total Balance"
       totalAmount={`₹ ${totalBalance}`}
       colors={COLORS}
       showTextAnchor
     />
+    </div>
     </div>
   );
 }
