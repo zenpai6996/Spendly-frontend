@@ -5,6 +5,8 @@ import { toggleDarkMode } from '@/App';
 import { UserContext } from '@/context/userContext';
 import spendlyLogo from "../../assets/images/spendlylogo.png";
 import ThemeButton from '../ui/ThemeButton';
+import { motion,AnimatePresence } from 'framer-motion';
+
 
 const Navbar = ({activeMenu}) => {
   const [openSideMenu, setOpenSideMenu] = useState(false);
@@ -48,13 +50,21 @@ const Navbar = ({activeMenu}) => {
      <div> <ThemeButton toggleDarkMode={toggleDarkMode}/></div>
 
       
-      {openSideMenu && (
-        <div className='fixed top-[48px] left-0 h-full lg:hidden z-20'>
-          <div className='bg-white dark:bg-gray-900 w-64 h-full'>
-            <SideMenu activeMenu={activeMenu}/>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {openSideMenu && (
+          <motion.div
+            initial={{ x: -300, opacity: 1 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -300, opacity: 1 }}
+            transition={{ type: 'spring', stiffness: 80, damping: 20 }}
+            className='fixed top-[48px] left-0 h-full lg:hidden z-20'
+          >
+            <div className='bg-white dark:bg-gray-900 w-64 h-full'>
+              <SideMenu activeMenu={activeMenu} />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
