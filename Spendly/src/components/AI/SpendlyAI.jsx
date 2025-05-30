@@ -258,12 +258,12 @@ const SpendlyAI = () => {
       {messages.length <= 1 && (
         <div className="p-4 border-b dark:border-gray-700">
           <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-3">Quick Actions:</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
             {quickActions.map((action, index) => (
               <button
                 key={index}
                 onClick={() => handleQuickAction(action.prompt)}
-                className="flex items-center gap-2 p-3 text-left border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                className="flex items-center  gap-3 p-2 text-left border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
               >
                 <action.icon className="w-5 h-5 text-green-500" />
                 <span className="text-sm dark:text-gray-300">{action.text}</span>
@@ -274,7 +274,7 @@ const SpendlyAI = () => {
       )}
 
       
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 ">
         {messages.map((message) => (
           <div
             key={message.id}
