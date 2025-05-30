@@ -185,44 +185,24 @@ npm run preview
 
 ## 🌟 Screenshots
 
-<table>
-  
-<tr>
-  
-<td>
-  
-### 🌅 Light Mode
-<img width="959" alt="Screenshot 2025-05-30 170707" src="https://github.com/user-attachments/assets/15acf92e-b993-43cb-8bd9-b6a96ebc7113" />
-</td>
+## 📸 Screenshots
 
-<td>
-  
-### 🌙 Dark Mode  
-<img width="959" alt="Screenshot 2025-05-30 170121" src="https://github.com/user-attachments/assets/29143cc0-d506-473f-86fb-8ab7d9734703" />
+### 🌅 Light Mode | 🌙 Dark Mode
 
-</td>
+| ![Light Mode 1](https://github.com/user-attachments/assets/15acf92e-b993-43cb-8bd9-b6a96ebc7113) | ![Dark Mode 1](https://github.com/user-attachments/assets/29143cc0-d506-473f-86fb-8ab7d9734703) |
+|:--:|:--:|
+| *Dashboard (Light)* | *Dashboard (Dark)* |
 
-</tr>
+| ![Light Mode 2](https://github.com/user-attachments/assets/ebc6b57d-4d8b-4155-a16b-21ac1007797b) | ![Dark Mode 2](https://github.com/user-attachments/assets/d11cddad-29fb-411f-b025-3d174f7d8bc4) |
+|:--:|:--:|
+| *Insights (Light)* | *Insights (Dark)* |
 
-</table>
 
-## 🚀 Deployment
 
-### Netlify (Recommended)
-
-1. Build the project: `npm run build`
-2. Deploy the `dist` folder to Netlify
-3. Configure environment variables if needed
-
-### Other Platforms
-
-- **Vercel**: Import GitHub repository directly
-- **GitHub Pages**: Use `gh-pages` package
-- **Firebase Hosting**: Use Firebase CLI
 
 ## 🤝 Contributing
 
-We welcome contributions! Here's how you can help:
+Contributions are welcome! Here's how you can help:
 
 1. **🍴 Fork** the repository
 2. **🌿 Create** your feature branch (`git checkout -b feature/AmazingFeature`)
