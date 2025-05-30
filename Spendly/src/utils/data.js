@@ -4,7 +4,8 @@ import {
   LuLogOut,
   LuCoins,
 } from "react-icons/lu";
-import { House ,Wallet, CircleDollarSign,LogOut} from "lucide-react";
+import { House ,Wallet, CircleDollarSign,LogOut,BotMessageSquare} from "lucide-react";
+
 
 
 export const SIDE_MENU_DATA = [
@@ -25,6 +26,12 @@ export const SIDE_MENU_DATA = [
     label:"Expense",
     icon: CircleDollarSign,
     path:"/expense",
+  },
+  {
+    id:"04",
+    label:"SpendlyAI",
+    icon:BotMessageSquare,
+    path:"/home",
   },
   {
     id:"06",
