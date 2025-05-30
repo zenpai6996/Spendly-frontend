@@ -16,6 +16,8 @@
   <strong>🚀 A Modern, Intuitive personal finance tracker built with React</strong>
 </p>
 
+[![GitHub Repo](https://badgen.net/badge/icon/github?icon=github&label=Spendly%20Backend)](https://github.com/zenpai6996/Spendly-backend)
+
 
 
 ---
