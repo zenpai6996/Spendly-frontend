@@ -85,7 +85,7 @@ Take control of your finances with Spendly - where intelligent design meets powe
 
 <div align="center">
 
-### 🌐 [**Live Demo →**](spendly-frontend-pi.vercel.app)
+### 🌐 [**Live Demo →**](https://spendly-frontend-pi.vercel.app)
 
 *Experience Spendly in action*
 
