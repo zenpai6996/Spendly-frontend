@@ -1,7 +1,8 @@
-# 💹 Spendly - Smart Personal Finance Tracker
+
 
 <div align="center">
-
+  
+[![Spendly ](./spendly-banner.svg)](https://github.com/zenpai6996/Spendly-frontend)
 ![Spendly Banner](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=35&duration=3000&pause=1000&color=22C55E&center=true&vCenter=true&width=600&height=100&lines=💰+Welcome+to+Spendly;📊+Track+Your+Finances;✨+Manage+Your+Money+Smart)
 
 <p align="center">
