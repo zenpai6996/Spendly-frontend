@@ -1,4 +1,4 @@
-# 💰 Spendly - Smart Personal Finance Tracker
+# 💹 Spendly - Smart Personal Finance Tracker
 
 <div align="center">
 
@@ -244,7 +244,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 </div>
 
----
+
 
 <div align="center">
 
