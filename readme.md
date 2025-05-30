@@ -185,10 +185,6 @@ npm run preview
 
 ## 🌟 Screenshots
 
-## 📸 Screenshots
-
-### 🌅 Light Mode | 🌙 Dark Mode
-
 | ![Light Mode 1](https://github.com/user-attachments/assets/15acf92e-b993-43cb-8bd9-b6a96ebc7113) | ![Dark Mode 1](https://github.com/user-attachments/assets/29143cc0-d506-473f-86fb-8ab7d9734703) |
 |:--:|:--:|
 | *Dashboard (Light)* | *Dashboard (Dark)* |
