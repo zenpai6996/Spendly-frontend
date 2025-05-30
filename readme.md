@@ -90,6 +90,7 @@ Take control of your finances with Spendly - where intelligent design meets powe
 - 🔒 **Secure**: User authentication and data protection
 - 📈 **Analytics**: Comprehensive financial insights
 - 🤖 **AI**:  AI-Powered Insights
+- 🔽 **PWA** : PWA supported (installable on mobile)
 
 ## 🔗 Demo
 
