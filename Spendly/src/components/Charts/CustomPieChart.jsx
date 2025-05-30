@@ -18,20 +18,20 @@ const CustomPieChart = ({
   showTextAnchor,
 }) => {
   return (
-    <ResponsiveContainer width="100%" height={380}>
+    <ResponsiveContainer width="100%" height={415}>
       <PieChart>
         {showTextAnchor && (
           <text 
             x="50%"
-            y="34%"
+            y="30%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className='text-[#666] dark:text-gray-300 '
+            className='text-[#666] dark:text-gray-100 '
             fill='#666'
             fontSize="14px"
           >
             {label}
-            <tspan x="50%" dy="30" fill="#333" fontSize="18px" fontWeight="500">
+            <tspan x="50%" dy="30" fill="#666" fontSize="18px" fontWeight="500">
               {totalAmount}
             </tspan>
           </text>

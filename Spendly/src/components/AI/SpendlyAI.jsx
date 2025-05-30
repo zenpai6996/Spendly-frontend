@@ -245,7 +245,7 @@ const SpendlyAI = () => {
 
   return(
   <div className="flex flex-col h-[calc(100vh-120px)] bg-white dark:bg-gray-900 rounded-lg shadow-lg">
-      {/* Header - Adjusted for mobile */}
+
       <div className="flex items-center gap-3 p-4 border-b dark:border-gray-700 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-t-lg">
         <Bot className="w-6 h-6 md:w-8 md:h-8" />
         <div>
@@ -254,7 +254,6 @@ const SpendlyAI = () => {
         </div>
       </div>
 
-      {/* Quick Actions - Adjusted grid for mobile */}
       {messages.length <= 1 && (
         <div className="p-3 md:p-4 border-b dark:border-gray-700">
           <h3 className="text-xs md:text-sm font-medium text-gray-600 dark:text-gray-400 mb-2 md:mb-3">Quick Actions:</h3>
@@ -273,7 +272,6 @@ const SpendlyAI = () => {
         </div>
       )}
 
-      {/* Chat Messages - Adjusted padding and spacing */}
       <div className="flex-1 overflow-y-auto p-3 md:p-4 space-y-3 md:space-y-4">
         {messages.map((message) => (
           <div
@@ -307,7 +305,6 @@ const SpendlyAI = () => {
           </div>
         ))}
 
-        {/* Loading Indicator */}
         {isLoading && (
           <div className="flex gap-2 md:gap-3 justify-start">
             <div className="w-6 h-6 md:w-8 md:h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
@@ -326,7 +323,6 @@ const SpendlyAI = () => {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input Area - Adjusted padding and sizing */}
       <div className="p-3 md:p-4 border-t dark:border-gray-700">
         <div className="flex gap-2">
           <input
