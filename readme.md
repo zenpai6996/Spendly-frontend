@@ -223,6 +223,12 @@ Contributions are welcome! Here's how you can help:
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
+## 🙏 Acknowledgments
+
+- Inspired by modern fintech applications
+- Built with ❤️ for the developer community
+- Special thanks to [Erik](https://github.com/erik) for Landing page design inspiration
+
 
 
 ## 📞 Support
