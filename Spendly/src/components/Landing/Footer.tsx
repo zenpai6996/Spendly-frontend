@@ -1,7 +1,8 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Logo from "@/assets/images/spendlylogo.png";
+import { StarsBackground } from "../animate-ui/backgrounds/stars";
 
 interface Footer7Props {
   logo?: {
@@ -81,17 +82,28 @@ export const Footer = ({
   sections = defaultSections,
   description = "AI powered personal Finance App",
   socialLinks = defaultSocialLinks,
-  copyright = "© 2024 Shadcnblocks.com. All rights reserved.",
 }: Footer7Props) => {
+
+    const [isMounted, setIsMounted] = React.useState(false);
+
+    React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
+
+
   return (
-    <motion.section 
+      <>
+      <motion.section 
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
-      className="pt-32 bg-[#111]"
+      className="pt-22 bg-[#111] relative"
     >
-      <div className="container px-10">
+    <StarsBackground starColor="#72CD16" pointerEvents className="absolute inset-0 flex rounded-t-xl z-0 shadow-xl shadow-green-400" />
+      <div className="container px-10 relative z-10">
         <motion.div 
           variants={containerVariants}
           className="flex w-full flex-col justify-between gap-10 lg:flex-row lg:items-start lg:text-left"
@@ -178,7 +190,7 @@ export const Footer = ({
                 variants={itemVariants}
               >
                 <motion.h3 
-                  whileHover={{ x: 5 }}
+                  whileHover={{ x: 0 }}
                   className="mb-4 text-gray-50 font-bold"
                 >
                   {section.title}
@@ -220,5 +232,6 @@ export const Footer = ({
         </motion.div>
       </div>
     </motion.section>
+      </>
   );
 };

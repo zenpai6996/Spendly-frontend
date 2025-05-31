@@ -34,7 +34,7 @@ export default function Landing() {
  useUserAuth();
 
   return (
-    <div>
+    <div className='bg-[#111]'>
       <InteractiveHero />
       <FeatureSteps 
         id='demo'
