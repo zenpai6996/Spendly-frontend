@@ -3,8 +3,7 @@ import { SIDE_MENU_DATA } from '@/utils/data'
 import { UserContext } from '@/context/userContext'
 import { useNavigate } from 'react-router-dom'
 import CharAvatar from '../Cards/CharAvatar'
-import { motion, AnimatePresence } from 'framer-motion'
-import { HiOutlineX } from 'react-icons/hi'
+import { motion } from 'framer-motion'
 import { toast } from 'sonner'
 
 const SideMenu = ({activeMenu, isOpen = true, isMobile = false, closeMobileMenu}) => {

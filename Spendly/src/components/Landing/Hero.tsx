@@ -3,6 +3,7 @@
 import React, {
     useEffect,
     useRef,
+    useContext,
     useState,
     useCallback,
     forwardRef,
@@ -28,11 +29,16 @@ import {
 import spendlylogo from "@/assets/images/spendlylogo.png";
 import spendlybanner from "@/assets/images/banner1.png";
 import { PinContainer } from '../ui/3d-pin';
+import { UserContext } from '@/context/userContext';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(" ");
 }
+
+
 
 interface RotatingTextRef {
   next: () => void;
@@ -398,6 +404,16 @@ const InteractiveHero: React.FC = () => {
    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
    const [openDropdown, setOpenDropdown] = useState<string | null>(null);
    const [isScrolled, setIsScrolled] = useState<boolean>(false);
+    const {user, clearUser} = useContext(UserContext);
+   const navigate = useNavigate();
+ 
+
+ const handleLogout = () => {
+     localStorage.clear();
+     clearUser();
+     navigate("/landing");
+     toast.success("Logged out Successfully");
+   }
 
    const { scrollY } = useScroll();
    useMotionValueEvent(scrollY, "change", (latest) => {
@@ -738,7 +754,14 @@ const InteractiveHero: React.FC = () => {
                           
                             <NavLink href="#demo" onClick={() => setIsMobileMenuOpen(false)}>Demo</NavLink>
                             {isAuthenticated ? (
+                               <>
                                 <NavLink href="/dashboard" onClick={() => setIsMobileMenuOpen(false)}>Dashboard</NavLink>
+                                <NavLink onClick={() =>{ 
+                                    setIsMobileMenuOpen(false)
+                                    handleLogout();
+                                    }}>Logout</NavLink>
+                               </>
+
                             ):(
                               <>
                             <NavLink href="/signup" onClick={() => setIsMobileMenuOpen(false)}>Sign Up</NavLink></>
