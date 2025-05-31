@@ -12,6 +12,14 @@ const SideMenu = ({activeMenu, isOpen = true, isMobile = false, closeMobileMenu}
   const navigate = useNavigate();
 
   const handleClick = (route) => {
+   
+   const handleLogout = () => {
+    localStorage.clear();
+    clearUser();
+    navigate("/landing");
+    toast.success("Logged out Successfully");
+  }
+   
     if(route === "logout"){
       handleLogout();
       return;
@@ -24,12 +32,7 @@ const SideMenu = ({activeMenu, isOpen = true, isMobile = false, closeMobileMenu}
     }
   };
 
-  const handleLogout = () => {
-    localStorage.clear();
-    clearUser();
-    navigate("/landing");
-    toast.success("Logged out Successfully");
-  }
+  
 
   const containerVariants = {
     hidden: { opacity: 0, x: -30 },
