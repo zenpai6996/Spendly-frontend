@@ -3,7 +3,8 @@ import {
   LuUtensils,
   LuTrendingDown,
   LuTrendingUp,
-  LuTrash2
+  LuTrash2,
+  LuFileSearch
 } from "react-icons/lu"
 
 const TransactionInfoCard = ({
@@ -13,16 +14,43 @@ const TransactionInfoCard = ({
   amount,
   type,
   hideDeleteBtn,
-  onDelete
+  onDelete,
+  isEmpty 
 }) => {
   const getAmountStyles = () => 
     type === "income" 
       ? "bg-green-50 dark:bg-green-100 text-green-500" 
       : "bg-red-50 dark:bg-red-100 text-red-500";
 
+  if (isEmpty) {
+    return (
+      <div className="flex flex-col items-center justify-center p-6 text-center">
+        <div className="w-16 h-16 flex items-center justify-center bg-gray-200 dark:bg-gray-700 rounded-full mb-4">
+          <LuFileSearch className="w-8 h-8 text-green-400 dark:text-green-500" />
+        </div>
+        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-1">
+          {type === "income"
+            ? "No Income Found"
+            : "No Expense Found"
+          }
+        </h3>
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          {type === "income" 
+            ? "You haven't recorded any income yet" 
+            : "You haven't recorded any expenses yet"}
+        </p>
+        <p className="text-xs mt-1 text-primary">
+          {type === "income"
+           ? <a href='/income'>Add Income</a>
+           : <a href='/expense'>Add Expense</a>
+          }
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className='group relative flex items-center gap-3 sm:gap-4 mt-2 p-2 sm:p-3 rounded-lg hover:bg-gray-100/60 dark:hover:bg-gray-600/60 cursor-pointer'>
-      {/* Icon Container - Smaller on mobile */}
       <div className='w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-lg sm:text-xl text-gray-800 bg-gray-100 dark:bg-gray-500 rounded-full flex-shrink-0'>
         {icon ? (
           <img src={icon} alt={title} className='w-5 h-5 sm:w-6 sm:h-6'/>

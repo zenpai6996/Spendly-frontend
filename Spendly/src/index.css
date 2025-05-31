@@ -44,7 +44,7 @@
 }
 
 .card{
-  @apply hover:scale-101  transition-all duration-300 ease-linear bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-md shadow-gray-300 hover:shadow-primary dark:hover:shadow-blue-200 dark:shadow-primary border dark:hover:border-blue-400 border-primary/50 ;
+  @apply hover:translate-y-0.5  transition-all duration-300 ease-linear bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-md shadow-gray-300 hover:shadow-primary dark:hover:shadow-primary dark:shadow-gray-800  border dark:hover:border-primary border-primary dark:border-gray-500 ;
 }
 
 .card-btn{

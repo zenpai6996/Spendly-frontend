@@ -15,8 +15,10 @@ const IncomeList = ({transactions, onDelete , onDownload}) => {
         </button>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-2'>
-        {transactions?.map((income) => (
-          <TransactionInfoCard
+        
+        {transactions?.length > 0 ? (
+          transactions.map((income) => (
+            <TransactionInfoCard
             key={income._id}
             title={income.source}
             icon={income.icon}
@@ -25,7 +27,13 @@ const IncomeList = ({transactions, onDelete , onDownload}) => {
             type={"income"}
             onDelete={() => onDelete(income._id)}
           />
-        ))}
+          ))
+        ) : (
+          <TransactionInfoCard 
+            isEmpty={true}
+            type="income"
+          />
+        )}
       </div>
     </div>
   )

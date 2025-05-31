@@ -14,17 +14,24 @@ const ExpenseTransactions = ({transactions,onSeeMore}) => {
         </button>
       </div>
       <div className='mt-6'>
-        {transactions?.slice(0,5)?.map((item) => (
-          <TransactionInfoCard
-            key={item._id}
-            title={item.category}
-            icon={item.icon}
-            date={moment(item.date).format("Do MMM YYYY")}
-            amount={item.amount}
-            type={item.type}
-            hideDeleteBtn
+        {transactions?.length > 0 ? (
+          transactions.slice(0,5).map((item) => (
+            <TransactionInfoCard
+              key={item._id}
+              title={item.category}
+              icon={item.icon}
+              date={moment(item.date).format("Do MMM YYYY")}
+              amount={item.amount}
+              type={"expense"}
+              hideDeleteBtn
+            />
+          ))
+        ) : (
+          <TransactionInfoCard 
+            isEmpty={true}
+            type="expense"
           />
-        ))}
+        )}
       </div>
     </div>
   )
