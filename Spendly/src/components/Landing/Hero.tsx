@@ -659,7 +659,7 @@ const InteractiveHero: React.FC = () => {
             initial="top"
             animate={isScrolled ? "scrolled" : "top"}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="px-6 w-full md:px-10 lg:px-16 sticky top-0 z-30 backdrop-blur-md border-b"
+            className="px-6 w-full md:px-10 lg:px-16 sticky top-0 z-100 backdrop-blur-md border-b"
         >
             <nav className="flex justify-between items-center max-w-screen-xl mx-auto h-[70px]">
                 <div className="flex items-center flex-shrink-0"> 

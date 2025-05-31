@@ -192,7 +192,7 @@ export const Footer = ({
                       key={linkIdx}
                       variants={itemVariants}
                       whileHover={{ x: 5, color: "#3b82f6" }} 
-                      className="font-medium hover:text-primary"
+                      className="font-medium text-gray-50 hover:text-primary"
                     >
                       <a href={link.href}>{link.name}</a>
                     </motion.li>
