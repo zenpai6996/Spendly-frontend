@@ -14,6 +14,7 @@ import { Toaster } from "sonner";
 import UserProvider from './context/userContext';
 import Home from './pages/Landing/Home';
 import Landing from './pages/Landing/Landing';
+import { FeatureSteps } from './components/Landing/Demo';
 
 
 
@@ -49,6 +50,7 @@ const App = () => {
       <Route path='/landing' exact element={<Landing/>}/>
       <Route path='/dashboard' exact element={<Dashboard/>}/>
       <Route path='/home' exact element={<Home/>}/>
+      <Route path='#demo' exact element={<FeatureSteps/>}/>
       <Route path='/income' exact element={<Income/>}/>
       <Route path='/expense' exact element={<Expenses/>}/>
     </Routes>

@@ -26,7 +26,7 @@ import {
     type Variants,
 } from 'framer-motion';
 import spendlylogo from "@/assets/images/spendlylogo.png";
-import spendlybanner from "@/assets/images/banner.png";
+import spendlybanner from "@/assets/images/banner1.png";
 
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {
@@ -249,7 +249,7 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
 );
 RotatingText.displayName = "RotatingText";
 
-const ShinyText: React.FC<{ text: string; className?: string }> = ({ text, className = "" }) => (
+export const ShinyText: React.FC<{ text: string; className?: string }> = ({ text, className = "" }) => (
     <span className={cn("relative overflow-hidden inline-block", className)}>
         {text}
         <span style={{
@@ -301,25 +301,45 @@ interface NavLinkProps {
     onClick?: (event: ReactMouseEvent<HTMLAnchorElement>) => void;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ href = "#", children, hasDropdown = false, className = "", onClick }) => (
-   <motion.a
-     href={href}
-     onClick={onClick}
-     className={cn("relative group text-sm font-medium text-gray-300 hover:text-primary transition-colors duration-200 flex items-center py-1", className)}
-     whileHover="hover"
-   >
-     {children}
-     {hasDropdown && <ChevronDownIcon />}
-     {!hasDropdown && (
-         <motion.div
-           className="absolute bottom-[-2px] left-0 right-0 h-[1px] bg-primary"
-           variants={{ initial: { scaleX: 0, originX: 0.5 }, hover: { scaleX: 1, originX: 0.5 } }}
-           initial="initial"
-           transition={{ duration: 0.3, ease: "easeOut" }}
-         />
-     )}
-   </motion.a>
- );
+const handleSmoothScroll = (e: ReactMouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId.replace('#', ''));
+    if (element) {
+        element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+};
+
+const NavLink: React.FC<NavLinkProps> = ({ href = "#", children, hasDropdown = false, className = "", onClick }) => {
+    const handleClick = (e: ReactMouseEvent<HTMLAnchorElement>) => {
+        if (href.startsWith('#')) {
+            handleSmoothScroll(e, href);
+        }
+        onClick?.(e);
+    };
+
+    return (
+        <motion.a
+            href={href}
+            onClick={handleClick}
+            className={cn("relative group text-sm font-medium text-gray-300 hover:text-primary transition-colors duration-200 flex items-center py-1", className)}
+            whileHover="hover"
+        >
+            {children}
+            {hasDropdown && <ChevronDownIcon />}
+            {!hasDropdown && (
+                <motion.div
+                    className="absolute bottom-[-2px] left-0 right-0 h-[1px] bg-primary"
+                    variants={{ initial: { scaleX: 0, originX: 0.5 }, hover: { scaleX: 1, originX: 0.5 } }}
+                    initial="initial"
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                />
+            )}
+        </motion.a>
+    );
+};
 
 interface DropdownMenuProps {
     children: ReactNode;
@@ -642,6 +662,7 @@ const InteractiveHero: React.FC = () => {
         >
             <nav className="flex justify-between items-center max-w-screen-xl mx-auto h-[70px]">
                 <div className="flex items-center flex-shrink-0"> 
+                    <a href="/landing">
                     <img
                     src={spendlylogo}
                     alt="Spendly Logo"
@@ -649,15 +670,16 @@ const InteractiveHero: React.FC = () => {
                     height={40}
                     className='rounded-xl hover:rotate-5 hover:scale-105 transition-all duration-150 ease-in-out'
                     />  
-                    <span className="text-xl font-bold text-white ml-2">Spendly</span>
+                    </a>
+                   <a href="/landing">
+                    <span  className="text-xl font-bold text-white ml-2">Spendly</span>
+                   </a>
                 </div>
 
                 <div className="hidden md:flex items-center justify-center flex-grow space-x-6 lg:space-x-20 px-4">
-                    <NavLink href="#features">Features</NavLink>
 
                     <NavLink href="#demo">Demo</NavLink>
 
-                    <NavLink href="#faqs">FAQs</NavLink>
                     
                 </div>
 
@@ -712,9 +734,8 @@ const InteractiveHero: React.FC = () => {
                         className="md:hidden absolute top-full left-0 right-0 bg-[#111111]/95 backdrop-blur-sm shadow-lg py-4 border-t border-gray-800/50"
                     >
                         <div className="flex flex-col items-center space-y-4 px-6">
-                            <NavLink href="#features" onClick={() => setIsMobileMenuOpen(false)}>Features</NavLink>
-                            <NavLink href="#faqs" onClick={() => setIsMobileMenuOpen(false)}>FAQs</NavLink>
-                            <NavLink href="#faqs" onClick={() => setIsMobileMenuOpen(false)}>Demo</NavLink>
+                          
+                            <NavLink href="#demo" onClick={() => setIsMobileMenuOpen(false)}>Demo</NavLink>
                             {isAuthenticated ? (
                                 <NavLink href="/dashboard" onClick={() => setIsMobileMenuOpen(false)}>Dashboard</NavLink>
                             ):(
