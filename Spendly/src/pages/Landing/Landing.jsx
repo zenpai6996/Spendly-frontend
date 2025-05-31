@@ -11,13 +11,13 @@ import { Footer } from '@/components/Landing/Footer';
 const features = [
   { 
     step: 'Step 1', 
-    title: 'Add  Income',
+    title: 'Income',
     content: 'Start using Spendly by adding an Income source.', 
     image: spendlybanner1 
   },
   { 
     step: 'Step 2',
-    title: 'Add Expense',
+    title: 'Expense',
     content: 'Understand your spending habits through detailed graphs based on your expenses.',
     image: spendlybanner2
   },

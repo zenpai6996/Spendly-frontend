@@ -27,6 +27,7 @@ import {
 } from 'framer-motion';
 import spendlylogo from "@/assets/images/spendlylogo.png";
 import spendlybanner from "@/assets/images/banner1.png";
+import { PinContainer } from '../ui/3d-pin';
 
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {
@@ -835,19 +836,25 @@ const InteractiveHero: React.FC = () => {
            
 
             <motion.div
-                variants={imageVariants}
-                initial="hidden"
-                animate="visible"
-                className="w-full max-w-4xl mt-10 mx-auto px-4 sm:px-0"
+            variants={imageVariants}
+            initial="hidden"
+            animate="visible"
+            className="w-full max-w-3xl mt-16 mx-auto px-4 sm:px-6 lg:px-8 flex justify-center"
+            style={{ minHeight: '300px' }}
             >
-               
+            <PinContainer 
+                title="Dashboard"
+                containerClassName="w-full max-w-5xl mx-auto h-[200px] sm:h-[300px] lg:h-[350px]"
+            >
+                <div className="relative w-full h-full flex items-center justify-center ">
                 <img 
                     src={spendlybanner}
                     alt="Product screen preview showing collaborative features"
-                    className="w-full h-auto object-contain rounded-lg shadow-xl border border-gray-700/50"
+                    className="w-full h-full object-fill rounded-lg shadow-2xl max-w-full"
                     loading="lazy"
                 />
-                
+                </div>
+            </PinContainer>
             </motion.div>
         </main>
 

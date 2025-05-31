@@ -118,7 +118,7 @@ export const Footer = ({
               </motion.a>
               <motion.h2 
                 variants={itemVariants}
-                className="text-xl font-semibold"
+                className="text-xl text-gray-50 font-semibold"
               >
                 Spendly
               </motion.h2>
@@ -126,14 +126,14 @@ export const Footer = ({
 
             <motion.p 
               variants={itemVariants}
-              className="max-w-[70%] text-sm text-muted-foreground"
+              className="max-w-[70%] text-sm text-gray-50"
             >
               {description}
             </motion.p>
 
             <motion.p 
               variants={itemVariants}
-              className="max-w-[70%] text-sm text-muted-foreground"
+              className="max-w-[70%] text-sm text-gray-50"
             >
               Crafted with ❤️ by{" "}
               <motion.span 
@@ -146,7 +146,7 @@ export const Footer = ({
 
             <motion.ul 
               variants={containerVariants}
-              className="flex items-center space-x-6 text-muted-foreground"
+              className="flex items-center space-x-6 text-gray-50"
             >
               {socialLinks.map((social, idx) => (
                 <motion.li 
@@ -179,7 +179,7 @@ export const Footer = ({
               >
                 <motion.h3 
                   whileHover={{ x: 5 }}
-                  className="mb-4 font-bold"
+                  className="mb-4 text-gray-50 font-bold"
                 >
                   {section.title}
                 </motion.h3>
@@ -208,7 +208,7 @@ export const Footer = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-8 flex flex-col justify-between gap-4 border-t py-8 text-xs font-medium text-muted-foreground md:flex-row md:items-center md:text-left"
+          className="mt-8 flex flex-col justify-between gap-4 border-t py-8 text-xs font-medium text-gray-50 md:flex-row md:items-center md:text-left"
         >
           <motion.p 
             whileHover={{ scale: 1.02 }}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/utils/cn";
 import { ShinyText } from "./Hero";
+import { PinContainer } from "../ui/3d-pin";
 
 interface Feature {
   step: string
@@ -142,7 +143,7 @@ export function FeatureSteps({
                     <motion.span 
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className="text-lg font-bold"
+                      className="text-lg text-gray-50 font-bold"
                     >
                       ✓
                     </motion.span>
@@ -150,7 +151,7 @@ export function FeatureSteps({
                     <motion.span 
                       initial={{ opacity: 0.6 }}
                       animate={{ opacity: 1 }}
-                      className="text-lg font-semibold"
+                      className="text-lg text-gray-50 font-semibold"
                     >
                       {index + 1}
                     </motion.span>
@@ -162,13 +163,13 @@ export function FeatureSteps({
                   variants={itemVariants}
                 >
                   <motion.h3 
-                    className="text-xl md:text-2xl font-semibold"
+                    className="text-xl text-gray-50 md:text-2xl font-semibold"
                     whileHover={{ x: 5 }}
                   >
                     {feature.title || feature.step}
                   </motion.h3>
                   <motion.p 
-                    className="text-sm md:text-lg text-muted-foreground"
+                    className="text-sm text-gray-50 md:text-lg text-muted-foreground"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: index === currentFeature ? 1 : 0.6 }}
                   >
@@ -212,7 +213,8 @@ export function FeatureSteps({
                       }}
                       whileHover={{ scale: 1.02 }}
                     >
-                      <motion.img
+                      <PinContainer title={feature.title}>
+                        <motion.img
                         src={feature.image}
                         alt={feature.step}
                         className="w-full h-full object-center transition-transform transform"
@@ -222,6 +224,7 @@ export function FeatureSteps({
                         animate={{ scale: 1 }}
                         transition={{ duration: 0.5 }}
                       />
+                      </PinContainer>
                       <motion.div 
                         className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-background via-background/50 to-transparent"
                         initial={{ opacity: 0 }}
