@@ -13,6 +13,7 @@ import Expenses from './pages/Dashboard/Expenses';
 import { Toaster } from "sonner";
 import UserProvider from './context/userContext';
 import Home from './pages/Landing/Home';
+import Landing from './pages/Landing/Landing';
 
 
 
@@ -45,6 +46,7 @@ const App = () => {
       <Route path='/' element={<Root/>}/>
       <Route path='/login' exact element={<Login/>}/>
       <Route path='/signup' exact element={<SignUp/>}/>
+      <Route path='/landing' exact element={<Landing/>}/>
       <Route path='/dashboard' exact element={<Dashboard/>}/>
       <Route path='/home' exact element={<Home/>}/>
       <Route path='/income' exact element={<Income/>}/>
@@ -82,8 +84,8 @@ const Root = () => {
 
   //Redirect to dashboard if authenticated 
   return isAuthenticated ? (
-    <Navigate to={"/dashboard"}/>
+    <Navigate to={"/dashboard"} replace/>
   ):(
-    <Navigate to={"/login"}/>
+    <Navigate to={"/landing"} replace/>
   );
 };

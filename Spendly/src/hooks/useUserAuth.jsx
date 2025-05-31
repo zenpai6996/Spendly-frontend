@@ -27,11 +27,19 @@ export const useUserAuth = () => {
         })
         if(isMounted){
           clearUser();
-          navigate("/login");
+            localStorage.removeItem("token");
+          navigate("/landing");
         }
       }
     };
-    fetchUserInfo();
+      if (localStorage.getItem("token")) {
+      fetchUserInfo();
+    } else {
+      // No token - ensure we're on landing page
+      if (window.location.pathname !== "/landing") {
+        navigate("/landing");
+      }
+    }
 
     return () => {
       isMounted = false;

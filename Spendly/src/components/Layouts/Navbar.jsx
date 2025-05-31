@@ -34,7 +34,7 @@ const Navbar = ({activeMenu, isSideMenuOpen, toggleSideMenu}) => {
         </button>
         
         <div>
-          <a href="/dashboard">
+          <a href="/landing">
             <img 
               src={spendlyLogo} 
               alt="Spendly Logo" 
@@ -44,7 +44,7 @@ const Navbar = ({activeMenu, isSideMenuOpen, toggleSideMenu}) => {
         </div>
         
         <h2 className='text-2xl font-semibold hover:text-primary dark:hover:text-primary transition-colors duration-200 ease-in-out dark:text-gray-50 text-gray-800'>
-          <a href='/dashboard'>Spendly</a>
+          <a href='/landing'>Spendly</a>
         </h2>
         
         <h3 className='text-gray-700 text-center hidden md:hidden lg:block pr-170 dark:text-gray-50'>

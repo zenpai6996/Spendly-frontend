@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import CharAvatar from '../Cards/CharAvatar'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HiOutlineX } from 'react-icons/hi'
+import { toast } from 'sonner'
 
 const SideMenu = ({activeMenu, isOpen = true, isMobile = false, closeMobileMenu}) => {
   const {user, clearUser} = useContext(UserContext);
@@ -26,7 +27,8 @@ const SideMenu = ({activeMenu, isOpen = true, isMobile = false, closeMobileMenu}
   const handleLogout = () => {
     localStorage.clear();
     clearUser();
-    navigate("/login");
+    navigate("/landing");
+    toast.success("Logged out Successfully");
   }
 
   const containerVariants = {
