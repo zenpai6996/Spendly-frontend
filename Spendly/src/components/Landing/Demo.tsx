@@ -180,9 +180,9 @@ export function FeatureSteps({
             ))}
           </motion.div>
 
-          <motion.div
+            <motion.div
             className={cn(
-              "order-1 md:order-2 relative h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden rounded-lg"
+              "order-1 md:order-2 relative h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden rounded-lg hidden md:block"
             )}
             variants={itemVariants}
           >
