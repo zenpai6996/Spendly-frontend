@@ -100,7 +100,7 @@ export const Footer = ({
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
-      className="pt-22 bg-[#111] relative"
+      className="pt-22 mt-20 bg-[#111] relative"
     >
     <StarsBackground starColor="#72CD16" pointerEvents className="absolute inset-0 flex rounded-t-xl z-0 shadow-xl shadow-green-400" />
       <div className="container px-10 relative z-10">
@@ -138,14 +138,14 @@ export const Footer = ({
 
             <motion.p 
               variants={itemVariants}
-              className="max-w-[70%] text-sm text-gray-50"
+              className="max-w-[70%] text-xs sm:text-sm text-gray-50"
             >
               {description}
             </motion.p>
 
             <motion.p 
               variants={itemVariants}
-              className="max-w-[70%] text-sm text-gray-50"
+              className="max-w-[70%] text-xs sm:text-sm text-gray-50"
             >
               Crafted with ❤️ by{" "}
               <motion.span 
@@ -191,13 +191,13 @@ export const Footer = ({
               >
                 <motion.h3 
                   whileHover={{ x: 0 }}
-                  className="mb-4 text-gray-50 font-bold"
+                  className="mb-4 text-sm sm:text-xl text-gray-50 font-bold"
                 >
                   {section.title}
                 </motion.h3>
                 <motion.ul 
                   variants={containerVariants}
-                  className="space-y-3 text-sm text-muted-foreground"
+                  className="space-y-3 text-xs sm:text-sm text-muted-foreground"
                 >
                   {section.links.map((link, linkIdx) => (
                     <motion.li
@@ -220,7 +220,7 @@ export const Footer = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-8 flex flex-col justify-between gap-4 border-t py-8 text-xs font-medium text-gray-50 md:flex-row md:items-center md:text-left"
+          className="mt-8 flex flex-col justify-between gap-4 border-t py-8 text-xs sm:text-xs font-medium text-gray-50 md:flex-row md:items-center md:text-left"
         >
           <motion.p 
             whileHover={{ scale: 1.02 }}
