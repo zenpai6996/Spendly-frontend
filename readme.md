@@ -41,9 +41,9 @@ Take control of your finances with Spendly - where intelligent design meets powe
 | 📊 **Smart Dashboard** | 💸 **Expense Tracking** | 💰 **Income Management** | 🎨 **Modern UI/UX** | 🤖 **SpendlyAI** |
 |------------------------|-------------------------|---------------------------|---------------------|------------------|
 | • Real-time financial overview | • Quick expense entry | • Multiple income sources | • Responsive design | • AI-generated financial insights |
-| • Interactive charts and graphs | • Category-based organization | • Automatic calculations | • Smooth animations | • Auto-categorization of expenses |
+| • Interactive charts and graphs | • Category-based organization | • Accurate calculations | • Smooth animations | • Personal Finance Assistant |
 | • Animated data visualizations | • Transaction history | • Monthly/yearly projections | • Intuitive navigation | • Personalized recommendations |
-| • Dark/Light theme support | • Spending pattern analysis | • Financial goal tracking | • Mobile-first approach | |
+| • Dark/Light theme support | • Spending pattern analysis | • Intuitive charts | • Mobile-first approach | |
 
 
 
