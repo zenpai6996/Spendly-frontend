@@ -1,15 +1,33 @@
 import React from 'react'
 
 const CustomTooltip = ({active , payload}) => {
+  const isDarkMode = document.documentElement.classList.contains('dark');
+  
   if(active && payload && payload.length){
     return(
-      <div className='bg-white dark:bg-gray-800 dark:border-primary shadow-md rounded-lg p-2 border border-gray-300'>
-        <p className='text-xs font-semibold text-primary mb-1'>
+      <div className={`
+        backdrop-blur-sm shadow-lg rounded-xl p-3 border transition-all duration-200
+        ${isDarkMode 
+          ? 'bg-gray-900/95 border-gray-600 shadow-gray-900/30' 
+          : 'bg-white/95 border-gray-200 shadow-gray-200/40'
+        }
+      `}>
+        <p className={`
+          text-xs font-semibold mb-2 tracking-wide uppercase
+          ${isDarkMode ? 'text-emerald-300' : 'text-emerald-700'}
+        `}>
           {payload[0].name}
         </p>
-        <p className='text-sm text-gray-600 dark:text-gray-300'>
+        <p className={`
+          text-sm
+          ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}
+        `}>
           Amount: {" "}
-          <span className='text-sm font-medium text-gray-900 dark:text-gray-200'> ₹{" "}{payload[0].value} 
+          <span className={`
+            text-base font-semibold ml-1
+            ${isDarkMode ? 'text-white' : 'text-gray-900'}
+          `}>
+            ₹{payload[0].value.toLocaleString()}
           </span>
         </p>
       </div>

@@ -10,7 +10,7 @@ const IncomeList = ({transactions, onDelete , onDownload}) => {
         <h5 className='text-lg'>
           Income Sources
         </h5>
-        <button className='card-btn2' onClick={onDownload}>
+        <button className='card-btn2 mb-1' onClick={onDownload}>
           <LuDownload className='text-base'/> Download
         </button>
       </div>

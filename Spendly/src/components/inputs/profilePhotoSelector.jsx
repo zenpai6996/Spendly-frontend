@@ -1,128 +1,88 @@
-import React, { useRef ,useState } from 'react';
-import { LuUser,LuUpload,LuTrash } from 'react-icons/lu';
+import React, { useRef, useState } from 'react';
+import { LuUser, LuUpload, LuTrash } from 'react-icons/lu';
 
-const ProfilePhotoSelector = ({image , setImage}) => {
-  
+const ProfilePhotoSelector = ({ image, setImage, size = "md" }) => {
   const inputRef = useRef(null);
-  const [previewUrl, setpreviewUrl] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
+
+  const sizeClasses = {
+    sm: {
+      container: 'w-20 h-20',
+      icon: 'text-3xl',
+      button: 'w-5 h-5 -bottom-1 -right-1'
+    },
+    md: {
+      container: 'w-24 h-24',
+      icon: 'text-4xl',
+      button: 'w-6 h-6 -bottom-1 -right-1'
+    },
+    lg: {
+      container: 'w-32 h-32',
+      icon: 'text-5xl',
+      button: 'w-8 h-8 -bottom-2 -right-2'
+    }
+  };
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    if(file){
+    if (file) {
       setImage(file);
       const preview = URL.createObjectURL(file);
-      setpreviewUrl(preview);
+      setPreviewUrl(preview);
     }
   };
+
   const handleRemoveImage = () => {
     setImage(null);
-    setpreviewUrl(null);
-  } 
+    setPreviewUrl(null);
+    if (inputRef.current) {
+      inputRef.current.value = '';
+    }
+  };
+
   const onChooseFile = () => {
     inputRef.current.click();
-  }
+  };
 
   return (
-    <div className='flex justify-center mb-6'>
+    <div className="flex justify-center mb-2">
       <input 
-        type='file'
-        accept='image/*'
+        type="file"
+        accept="image/*"
         ref={inputRef}
         onChange={handleImageChange}
-        className='hidden'
+        className="hidden"
       />
+      
       {!image ? (
-        <div className='w-15 h-15 flex items-center justify-center bg-green-200 rounded-full relative '>
-           <LuUser className='text-4xl text-primary'/>
-           <button
-            type='button'
-            className='w-6 h-6 flex cursor-pointer items-center justify-center bg-primary text-white rounded-full absolute -bottom-1 -right-1'
+        <div className={`relative ${sizeClasses[size].container} flex items-center justify-center bg-emerald-100 dark:bg-emerald-900/30 rounded-full group transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20`}>
+          <LuUser className={`${sizeClasses[size].icon} text-emerald-600 dark:text-emerald-400 opacity-80 group-hover:opacity-100`} />
+          <button
+            type="button"
+            className={`absolute ${sizeClasses[size].button} flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white rounded-full transition-all duration-300 shadow-md cursor-pointer`}
             onClick={onChooseFile}
-           >
-              <LuUpload/>
-          </button> 
+          >
+            <LuUpload className="text-xs" />
+          </button>
         </div>
-      ):(
-        <div className='relative '>
+      ) : (
+        <div className="relative group">
           <img
             src={previewUrl}
-            alt='Profile Photo'
-            className='w-15 h-15 rounded-full object-cover'
+            alt="Profile Preview"
+            className={`${sizeClasses[size].container} rounded-full object-cover border-2 border-white dark:border-gray-700 shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:shadow-emerald-500/20`}
           />
           <button 
-            type='button'
-            className='w-6 h-6 flex cursor-pointer items-center justify-center bg-red-400 text-white rounded-full absolute -bottom-1 -right-1'
+            type="button"
+            className={`absolute ${sizeClasses[size].button} flex items-center justify-center bg-red-500 hover:bg-red-600 text-white rounded-full transition-all duration-300 shadow-md cursor-pointer`}
             onClick={handleRemoveImage}
           >
-            <LuTrash/>
+            <LuTrash className="text-xs" />
           </button>
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ProfilePhotoSelector
-
-{/* <div className='lg:w-[70%] h-full flex flex-col justify-center px-4 sm:px-0'>
-        <div className='mb-6 sm:mb-8'>
-          <h3 className='text-2xl sm:text-xl font-semibold text-black text-center md:text-left'>
-            Welcome Back
-          </h3>
-          <p className='text-sm text-primary mt-1 text-center md:text-left'>
-            Please enter your details to Log In
-          </p>
-        </div>
-        
-        <div className='space-y-4'>
-          <Input
-            value={email}
-            onChange={({target}) => setEmail(target.value)}
-            label="Email Address"
-            placeholder="john@example.com"
-            type="text"
-          />
-          
-          <Input
-            value={password}
-            onChange={({target}) => setPassword(target.value)}
-            label="Password"
-            placeholder="Enter Password"
-            type="password"
-          />
-
-          <div className="text-xs ">
-            <p className="text-slate-600 mb-1 text-sm">Password must contain:</p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1">
-              <li className={`flex items-center ${passwordValidation.checks.length ? 'text-green-500' : 'text-slate-400'}`}>
-                {passwordValidation.checks.length ? '✓' : '✗'} At least 8 characters
-              </li>
-              <li className={`flex items-center ${passwordValidation.checks.uppercase ? 'text-green-500' : 'text-slate-400'}`}>
-                {passwordValidation.checks.uppercase ? '✓' : '✗'} At least one uppercase letter
-              </li>
-              <li className={`flex items-center ${passwordValidation.checks.number ? 'text-green-500' : 'text-slate-400'}`}>
-                {passwordValidation.checks.number ? '✓' : '✗'} At least one number
-              </li>
-              <li className={`flex items-center ${passwordValidation.checks.specialChar ? 'text-green-500' : 'text-slate-400'}`}>
-                {passwordValidation.checks.specialChar ? '✓' : '✗'} At least one special symbol
-              </li>
-            </ul>
-          </div>
-
-          <button 
-            type='submit'
-            onClick={handleLogin}
-            className="w-full bg-primary text-white py-3 rounded-2xl mt-4 font-medium transition-all duration-300 ease-in-out 
-                    hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/30 hover:border-green-300"
-          >
-            LOGIN
-          </button>
-          
-          <p className='text-2xs text-slate-500 text-center '>
-            Don't have an account?{' '}
-            <Link to="/signup" className='text-primary hover:text-green-500'>
-              Sign Up
-            </Link>
-          </p>
-        </div>
-      </div> */}
+export default ProfilePhotoSelector;

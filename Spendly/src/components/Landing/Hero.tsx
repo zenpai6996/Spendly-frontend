@@ -27,7 +27,7 @@ import {
     type Variants,
 } from 'framer-motion';
 import spendlylogo from "@/assets/images/spendlylogo.png";
-import spendlybanner from "@/assets/images/banner1.png";
+import spendlybanner from "@/assets/images/banner6.png";
 import { PinContainer } from '../ui/3d-pin';
 import { UserContext } from '@/context/userContext';
 import { useNavigate } from 'react-router-dom';

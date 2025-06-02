@@ -81,8 +81,8 @@ const SideMenu = ({activeMenu, isOpen = true, isMobile = false, closeMobileMenu}
       className={`${
         isMobile 
           ? 'w-64 h-full ' 
-          : 'w-64 h-full sticky top-[1px] rounded-tr-xl'
-      } bg-white border-r dark:bg-gray-900 border-primary dark:border-gray-600 p-5 z-20 overflow-hidden`}
+          : 'w-64 h-full rounded-tr-xl'
+      } bg-white border-r dark:bg-gray-900 border-primary dark:border-gray-600 p-5 overflow-y-auto overflow-x-hidden`}
     >
       <div className='flex flex-col gap-6 h-full'>
        

@@ -12,7 +12,6 @@ import {
 import { FaEgg } from "react-icons/fa"; 
 import { GiRabbit } from 'react-icons/gi';
 
-
 const funFacts = [
   "Did you know? The largest Easter egg ever made weighed over 7,000 kg!",
   "Hidden bonus: Click the egg for a surprise!",
@@ -47,22 +46,23 @@ const AuthLayout = ({children}) => {
   }, []);
 
   return (
-    <div className='flex'>
-      <div className='w-screen h-screen md:w-[60vw] px-6 sm:px-8 md:px-12 pt-3 pb-12'>
-        <h2 className='text-5xl  font-extrabold bg-gradient-to-r from-green-500 to-green-800 bg-clip-text text-transparent animate-gradient-x bg-[length:200%_200%] text-center md:text-left '>
-          Spendly
-        </h2>
+    <div className='flex flex-col md:flex-row'>
+      <div className='w-full min-h-screen md:w-[60vw] px-4 sm:px-6 md:px-12 py-1 md:py-12 flex items-center justify-center'>
+       
         {children}
       </div>
-      <div className='hidden md:block w-[60vw] h-screen bg-green-200 bg-cover bg-no-repeat bg-center overflow-hidden p-8 relative'>
-        <div className='w-48 h-48 rounded-[40px] bg-green-600 absolute -top-26 -left-5'/>
-        <div className='w-48 h-48 border-[20px] rounded-[40px] border-green-800 absolute top-[60%] left-140'/>
-        <div className='w-48 h-48 rounded-[40px] bg-green-500 absolute -bottom-10 -left-15'/>
+      
+      <div className='hidden md:flex w-[40vw] h-screen bg-gradient-to-br from-green-100 to-emerald-200 dark:from-green-900 dark:to-emerald-950 p-8 relative overflow-hidden'>
+        <div className='absolute w-full h-full inset-0 overflow-hidden'>
+          <div className='w-48 h-48 rounded-[40px] bg-green-600/30 dark:bg-emerald-800/50 absolute -top-26 -left-5'/>
+          <div className='w-48 h-48 border-[20px] rounded-[40px] border-green-800/30 dark:border-emerald-800/50 absolute top-[60%] left-140'/>
+          <div className='w-48 h-48 rounded-[40px] bg-green-500/30 dark:bg-emerald-700/50 absolute -bottom-10 -left-15'/>
+        </div>
 
-        <div className='grid grid-cols-1 z-20 cursor-pointer'>
+        <div className='relative z-20 w-full mt-16'>
           <StatsInfoCard
             icon={RandomIcon ? <RandomIcon /> : null}
-            label="Track you Income and Expenses"
+            label="Track your Income and Expenses"
             value={randomValue}
             colors="bg-primary"
           />
@@ -70,7 +70,8 @@ const AuthLayout = ({children}) => {
 
         <img 
           src={card} 
-          className='w-64 lg:w-[70%] absolute bottom-5 right-20'
+          className='w-64 lg:w-[70%] absolute bottom-5 right-20 transform hover:scale-105 transition-transform duration-300'
+          alt="Credit card illustration"
         />
       </div>
     </div>
@@ -89,7 +90,6 @@ export const StatsInfoCard = ({ icon, label, value, color }) => {
     setTimeout(() => setShowConfetti(false), 5000);
   };
 
-  // Easter egg: Show fun fact tooltip on hover
   const handleMouseEnter = () => setShowFact(true);
   const handleMouseLeave = () => setShowFact(false);
 
@@ -105,14 +105,15 @@ export const StatsInfoCard = ({ icon, label, value, color }) => {
     <div
       className={`
         relative overflow-hidden
-        bg-gradient-to-br from-yellow-100 via-pink-100 to-blue-100
-        border-2 border-dashed border-green-300
-        rounded-3xl shadow-2xl
+        bg-gradient-to-br from-white/90 via-white/80 to-white/90
+        dark:from-gray-800/90 dark:via-gray-800/80 dark:to-gray-800/90
+        border-2 border-dashed border-green-300 dark:border-emerald-700
+        rounded-3xl shadow-lg
         p-6 flex gap-6 items-center
-        transition-all duration-500 ease-in-out
-        hover:scale-105 hover:shadow-pink-400/40
+        transition-all duration-300 ease-in-out
+        hover:scale-[1.02] hover:shadow-xl hover:shadow-pink-400/20 dark:hover:shadow-emerald-500/20
         cursor-pointer
-        cracked-egg-hover
+        backdrop-blur-sm
       `}
       onClick={handleCardClick}
       onMouseEnter={handleMouseEnter}
@@ -136,14 +137,15 @@ export const StatsInfoCard = ({ icon, label, value, color }) => {
             />
           ))}
         </div>
-        )}
+      )}
 
       <div
         className={`
-          w-16 h-16 flex items-center justify-center
-          text-[32px] rounded-full
+          w-14 h-14 flex items-center justify-center
+          text-[28px] rounded-full
           bg-gradient-to-tr from-pink-300 via-yellow-200 to-green-200
-          shadow-lg border-4 border-white
+          dark:from-pink-500 dark:via-yellow-400 dark:to-green-500
+          shadow-lg border-4 border-white dark:border-gray-700
           relative
           transition-all duration-300
           hover:rotate-12
@@ -151,58 +153,37 @@ export const StatsInfoCard = ({ icon, label, value, color }) => {
         onClick={handleEggClick}
         title="Click me for a surprise!"
       >
-        {eggMode ? <GiRabbit className="text-pink-700" /> : icon || <FaEgg className="text-yellow-500" />}
+        {eggMode ? <GiRabbit className="text-pink-700 dark:text-pink-300" /> : icon || <FaEgg className="text-yellow-500 dark:text-yellow-300" />}
         
-        <FaEgg className="absolute -bottom-2 -right-2 text-yellow-400 text-xl opacity-60 hover:opacity-100 transition" />
+        <FaEgg className="absolute -bottom-2 -right-2 text-yellow-400 dark:text-yellow-300 text-xl opacity-60 hover:opacity-100 transition" />
       </div>
 
-      
       <div>
-        <h6 className="text-xs text-gray-500 mb-1 font-mono tracking-wide">
+        <h6 className="text-xs text-gray-500 dark:text-gray-400 mb-1 font-medium tracking-wide">
           {label}
         </h6>
-        <span className="text-[22px] font-extrabold text-green-700 drop-shadow-lg">
+        <span className="text-xl font-bold text-green-700 dark:text-emerald-400">
           $ {value}
         </span>
       </div>
 
-      
       {showFact && (
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-full bg-white border border-green-200 rounded-lg px-4 py-2 text-xs text-gray-700 shadow-xl z-30 animate-bounce">
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-full bg-white dark:bg-gray-800 border border-green-200 dark:border-emerald-700 rounded-lg px-4 py-2 text-xs text-gray-700 dark:text-gray-300 shadow-xl z-30 animate-bounce">
           {fact}
         </div>
       )}
 
-      
-      <style >{`
-        .cracked-egg-hover:hover {
-          box-shadow: 0 0 0 4px #fff, 0 6px 24px 0 rgba(255, 192, 203, 0.3);
-          background: repeating-linear-gradient(
-            135deg,
-            #fff,
-            #fff 10px,
-            #ffe4e6 10px,
-            #ffe4e6 20px
-          );
-        }
-        @keyframes confetti {
-          0% { opacity: 1; transform: scale(1); }
-          100% { opacity: 0; transform: scale(2); }
-        }
-        .animate-confetti {
-          background: url('/confetti.svg') center/cover no-repeat;
-          animation: confetti 1.2s linear;
-        }
-          @keyframes confetti-fall {
-            0% {
-              opacity: 1;
-              transform: translateY(-100vh) rotate(0deg);
-            }
-            100% {
-              opacity: 0;
-              transform: translateY(100vh) rotate(360deg);
-            }
+      <style jsx>{`
+        @keyframes confetti-fall {
+          0% {
+            opacity: 1;
+            transform: translateY(-100vh) rotate(0deg);
           }
+          100% {
+            opacity: 0;
+            transform: translateY(100vh) rotate(360deg);
+          }
+        }
       `}</style>
     </div>
   );

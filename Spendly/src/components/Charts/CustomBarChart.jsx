@@ -18,26 +18,26 @@ const CustomBarChart = ({data}) => {
     light: {
       background: '#ffffff',
       chartBg: '#ffffff',
-      text: '#555',
-      grid: '#f0f0f0',
-      barEven: "#72CD16",
-      barOdd: "#cfbefb",
+      text: '#374151',
+      grid: '#e5e7eb',
+      barEven: "#10b981",
+      barOdd: "#8b5cf6",
       tooltipBg: '#ffffff',
       tooltipBorder: '#e5e7eb',
       tooltipText: '#111827',
-      tooltipLabel: '#72CD16',
+      tooltipLabel: '#10b981',
     },
     dark: {
-      background: '#1f2937',
+      background: '#111827',
       chartBg: '#1f2937',
-      text: '#e5e7eb',
+      text: '#d1d5db',
       grid: '#374151',
-      barEven: "#86efac",
+      barEven: "#34d399",
       barOdd: "#a78bfa",
       tooltipBg: '#111827',
       tooltipBorder: '#374151',
       tooltipText: '#f9fafb',
-      tooltipLabel: '#86efac',
+      tooltipLabel: '#34d399',
     }
   };
 
@@ -50,13 +50,25 @@ const CustomBarChart = ({data}) => {
   const CustomTooltip = ({active, payload}) => {
     if(active && payload && payload.length) {
       return (
-        <div className={`shadow-md rounded-lg p-2 border ${isDarkMode ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-300'}`}>
-          <p className={`text-xs font-semibold mb-1 ${isDarkMode ? 'text-emerald-300' : 'text-green-800'}`}>
+        <div className={`
+          shadow-lg rounded-xl p-3 border backdrop-blur-sm
+          ${isDarkMode 
+            ? 'bg-gray-900/95 border-gray-600 shadow-gray-900/20' 
+            : 'bg-white/95 border-gray-200 shadow-gray-200/40'
+          }
+        `}>
+          <p className={`
+            text-xs font-semibold mb-2 tracking-wide uppercase
+            ${isDarkMode ? 'text-emerald-300' : 'text-emerald-700'}
+          `}>
             {payload[0].payload.category || payload[0].payload.source}
           </p>
           <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Amount: <span className={`text-sm font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-             ₹ {payload[0].payload.amount}
+            Amount: <span className={`
+              text-base font-semibold ml-1
+              ${isDarkMode ? 'text-white' : 'text-gray-900'}
+            `}>
+             ₹{payload[0].payload.amount.toLocaleString()}
             </span>
           </p>
         </div>
@@ -66,43 +78,64 @@ const CustomBarChart = ({data}) => {
   };
 
   return (
-    <div className={`mt-6 rounded-lg ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
-      <ResponsiveContainer width={'100%'} height={300}>
+    <div className={`
+      mt-4 rounded-2xl p-4 transition-all duration-300 
+      ${isDarkMode 
+        ? 'bg-gradient-to-br from-gray-800 to-gray-900 shadow-xl shadow-gray-900/20' 
+        : 'bg-gradient-to-br from-white to-gray-50 shadow-lg shadow-gray-200/30'
+      }
+    `}>
+      <ResponsiveContainer width={'100%'} height={320}>
         <BarChart
           data={data}
           margin={{
             top: 20,
-            right: 20,
-            left: 20,
+            right: 15,
+            left: 10,
             bottom: 20,
           }}
         >
           <CartesianGrid 
-            strokeDasharray="3 3" 
+            strokeDasharray="2 4" 
             stroke={currentColors.grid}
+            strokeOpacity={0.3}
           />
           <XAxis 
             dataKey={"month"} 
             tick={{
-              fontSize: 12,
-              fill: currentColors.text
+              fontSize: 11,
+              fill: currentColors.text,
+              fontWeight: 500
             }}
             stroke={currentColors.grid}
+            tickLine={false}
+            axisLine={false}
           />
           <YAxis 
             tick={{
-              fontSize: 12,
-              fill: currentColors.text
+              fontSize: 11,
+              fill: currentColors.text,
+              fontWeight: 500
             }}
             stroke={currentColors.grid}
+            tickLine={false}
+            axisLine={false}
+            width={50}
           />
           <Tooltip content={CustomTooltip}/>
           <Bar 
             dataKey={"amount"}
-            radius={[10,10,0,0]}
+            radius={[8,8,0,0]}
+            maxBarSize={60}
           >
             {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={getBarColor(index)}/>
+              <Cell 
+                key={`cell-${index}`} 
+                fill={getBarColor(index)}
+                style={{
+                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))'
+                }}
+              />
             ))}
           </Bar>
         </BarChart>

@@ -146,43 +146,81 @@ const Income = () => {
 
   return (
     <DashboardLayout activeMenu="Income">
-      <div className='my-5 ml-5'>
-        <div className='grid grid-cols-1 gap-6'>
-          <div className=''>
-            <IncomeOverview
-            transactions={incomeData}
-            onAddIncome={() => setOpenAddIncomeModal(true)}
-          />
+      <div className='min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200'>
+        <div className='container mx-auto px-4 sm:px-6 lg:px-8 py-6'>
+          <div className='mb-8'>
+            <h1 className='text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2'>
+              Income Management
+            </h1>
+            <p className='text-gray-600 dark:text-gray-400 text-sm sm:text-base'>
+              Track and manage your income sources effectively
+            </p>
           </div>
-          <IncomeList 
-            transactions={incomeData}
-            onDelete={(id) => {
-              setOpenDeleteAlert({show:true , data:id})
-            }}
-            onDownload={handleDownloadIncomeDetails}
-          />
+
+          <div className='flex flex-col xl:grid-cols-12 gap-6 lg:gap-8'>
+            <div className='xl:col-span-8'>
+              <div className='bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 transition-colors duration-200'>
+                <IncomeList 
+                  transactions={incomeData}
+                  onDelete={(id) => {
+                    setOpenDeleteAlert({show:true , data:id})
+                  }}
+                  onDownload={handleDownloadIncomeDetails}
+                />
+              </div>
+            </div>
+            
+            <div className='xl:col-span-4'>
+              <div className='bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 transition-colors duration-200'>
+                <IncomeOverview
+                  transactions={incomeData}
+                  onAddIncome={() => setOpenAddIncomeModal(true)}
+                />
+              </div>
+            </div>
+          </div>
+
+          {loading && (
+            <div className='fixed inset-0 bg-black bg-opacity-20 dark:bg-opacity-40 flex items-center justify-center z-40'>
+              <div className='bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700'>
+                <div className='flex items-center space-x-3'>
+                  <div className='animate-spin rounded-full h-6 w-6 border-2 border-green-500 border-t-transparent'></div>
+                  <span className='text-gray-700 dark:text-gray-300 font-medium'>Fetching income data...</span>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
+
         <Modal
           isOpen={OpenAddIncomeModal}
           onClose={() => setOpenAddIncomeModal(false)}
-          title="Add Income"
+          title="Add New Income"
         >
-          <div dark:text-white text-gray-200>
-            <AddIncomeForm onAddIncome={handleAddIncome}/>
+          <div className='p-1'>
+            <div className='text-gray-700 dark:text-gray-200 space-y-4'>
+              <div className='text-sm text-gray-600 dark:text-gray-400 mb-4'>
+                Fill in the details to add a new income entry
+              </div>
+              <AddIncomeForm onAddIncome={handleAddIncome}/>
+            </div>
           </div>
         </Modal>
+
         <Modal 
           isOpen={openDeleteAlert.show}
           onClose={() => setOpenDeleteAlert({show:false ,data:null})}
-          title="Delete Income"
+          title="Confirm Deletion"
         >
-          <DeleteAlert
-            content="Are you sure you want to delete this income ?"
-            onDelete={() => deleteIncome(openDeleteAlert.data)}
-          />
+          <div className='p-1'>
+            <DeleteAlert
+              content="Are you sure you want to delete this income entry? This action cannot be undone."
+              onDelete={() => deleteIncome(openDeleteAlert.data)}
+            />
+          </div>
         </Modal>
       </div>
-      </DashboardLayout>
+    </DashboardLayout>
   )
 }
 
