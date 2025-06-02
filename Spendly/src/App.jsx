@@ -60,7 +60,7 @@ useEffect(() => {
     </Routes>
   </Router>
 <Toaster 
-  position="top-right"
+  position="top-center"
   richColors
   theme="light" 
   toastOptions={{
